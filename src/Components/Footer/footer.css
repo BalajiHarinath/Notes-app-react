@@ -1,0 +1,13 @@
+.footer {
+    position: fixed;
+    bottom: 2rem;
+    z-index: 2;
+}
+
+.email-username {
+    color: var(--primary-color);
+}
+
+.btn-logout:hover {
+    color: var(--primary-color);
+}
