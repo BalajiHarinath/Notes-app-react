@@ -1,0 +1,12 @@
+.header {
+    background-color: var(--secondary-color);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 4rem;
+    z-index: 2;
+}
+
+.title-header {
+    color: var(--primary-color);
+}

@@ -1,0 +1,30 @@
+.display-card{
+    height: fit-content;
+    width: 30rem;
+    position: relative;
+    border: transparent;
+    border-radius: 0.5rem;
+    /* background-color: #fcf5d8; */
+}
+
+.btn-pinned {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.btn-color {
+    color: var(--text-color2);
+}
+
+.btn-edit-display-card {
+    box-shadow: none;
+}
+
+.btn-edit-display-card:hover {
+    transform: scale(1);
+}
+
+.text-display-card {
+    line-height: 1.5rem;
+}

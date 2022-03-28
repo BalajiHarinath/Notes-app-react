@@ -1,41 +1,30 @@
 import "./App.css";
-import logo from "./logo.png";
+import "./css/main.css";
+import { Routes, Route } from "react-router-dom";
+
+import { Landing, SignUp, Login, Home } from "./Pages";
+import { Header, Footer, RestrictAuth, RequireAuth, Toast, ColorPalette } from "./Components";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+      {/* {(window.location.pathname === '/login' || window.location.pathname === '/signup' || window.location.pathname=== '/') ? null : <Header />}   */}
+      <Toast />
+        <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/color" element={<ColorPalette />} />
+
+            <Route element={<RestrictAuth/>}>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+            </Route>
+
+            <Route element={<RequireAuth />}>
+              <Route path="/home" element={<Home />} />
+            </Route>
+           
+          </Routes>   
+      {/* {(window.location.pathname === '/login' || window.location.pathname === '/signup' || window.location.pathname === '/') ? null : <Footer />} */}
     </div>
   );
 }

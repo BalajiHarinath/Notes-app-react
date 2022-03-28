@@ -1,0 +1,33 @@
+.home-main {
+    margin-top: 6rem;
+}
+
+/* sidebar */
+.sidebar {
+    margin-left: 3rem;
+    color: var(--text-color1);
+}
+
+.sidebar-item {
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    width: fit-content;
+    border-radius: 1rem;
+}
+
+.sidebar-item:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-create-new-note {
+    height: 2rem;
+    width: 13rem;
+}
+
+.btn-create-new-note:hover {
+    transform: scale(1);
+}
+
+
+
