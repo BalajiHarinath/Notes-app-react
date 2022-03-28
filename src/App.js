@@ -3,7 +3,7 @@ import "./css/main.css";
 import { Routes, Route } from "react-router-dom";
 
 import { Landing, SignUp, Login, Home } from "./Pages";
-import { Header, Footer, RestrictAuth, RequireAuth, Toast } from "./Components";
+import { Header, Footer, RestrictAuth, RequireAuth, Toast, ColorPalette } from "./Components";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Toast />
         <Routes>
             <Route path="/" element={<Landing />} />
+            <Route path="/color" element={<ColorPalette />} />
 
             <Route element={<RestrictAuth/>}>
               <Route path="/login" element={<Login />} />

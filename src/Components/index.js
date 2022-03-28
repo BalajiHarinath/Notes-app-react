@@ -5,3 +5,4 @@ export { InputCard } from "./Input-card/InputCard";
 export { RestrictAuth } from "./Restrict-auth/RestrictAuth";
 export { RequireAuth } from "./Restrict-auth/RequireAuth";
 export { Toast } from "./Toast/Toast";
+export { ColorPalette } from "./Color-palette/ColorPalette";

@@ -12,6 +12,7 @@ export const DisplayCard = ({color}) => {
             </div>
             <div className="edit-section flex flex-justify-space-between">
                 <select className="dropdown-new-note">
+                    <option value="tag" hidden>Tag</option>
                     <option value="Home">Home</option>
                     <option value="Work">Work</option>
                     <option value="Personal">Personal</option>
