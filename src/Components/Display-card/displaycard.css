@@ -1,20 +1,29 @@
-.display-card{
+.display-card {
     height: fit-content;
     width: 30rem;
     position: relative;
     border: transparent;
     border-radius: 0.5rem;
-    /* background-color: #fcf5d8; */
+}
+
+.display-card-empty {
+    width: 30rem;
+    height: 10rem;
 }
 
 .btn-pinned {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    cursor: default;
 }
 
-.btn-color {
+.btn-archive, .btn-delete {
     color: var(--text-color2);
+}
+
+.btn-archive:hover, .btn-delete:hover {
+    color: var(--primary-color);
 }
 
 .btn-edit-display-card {
@@ -27,4 +36,20 @@
 
 .text-display-card {
     line-height: 1.5rem;
+}
+
+.tag {
+    background-color: var(--white);
+    border: 1px solid var(--footer-background);
+    padding: 0.3rem 0.5rem;
+}
+
+.priority {
+    background-color: var(--white);
+    border: 1px solid var(--footer-background);
+    padding: 0.3rem 0.5rem;
+}
+
+.active {
+    color: var(--primary-color);
 }

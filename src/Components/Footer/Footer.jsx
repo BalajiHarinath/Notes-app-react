@@ -14,7 +14,7 @@ export const Footer = () => {
                 <p className="email-username">{userEmail}</p>
             </div>   
             <div className="flex flex-column pdl-2">
-                <button className="btn-logout btn-transparent" onClick={() => logout()}><span class="material-icons-outlined text-3xl">logout</span></button>
+                <button className="btn-logout btn-transparent" onClick={() => logout()}><span className="material-icons-outlined text-3xl">logout</span></button>
                 <span className="text-sm">Logout</span>
             </div>       
         </footer>

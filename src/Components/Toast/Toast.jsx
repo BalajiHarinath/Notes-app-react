@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./Toast.css";
+import "./toast.css";
 
 import { useEffect } from "react";
 import { useAuth } from "../../Context";
@@ -18,7 +18,7 @@ export const Toast = () => {
   },[display])
 
   return(
-    <div className={`${display ? "snackbar-container" : "display-none"} ${status}`}>{data}</div>
+    <div className={`${display ? "snackbar-container flex flex-justify-center" : "display-none"} ${status}`}>{data}</div>
   )
 
 }

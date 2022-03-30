@@ -21,7 +21,7 @@
 }
 
 .palette:hover {
-    border: 2px solid var(--footer-background);
+    border: 2px solid var(--footer-background) !important;  /*Added  !important so that it overrides in line styling*/
 }
 
 .display-none {

@@ -4,7 +4,6 @@
     position: relative;
     border: transparent;
     border-radius: 0.5rem;
-    background-color: var(--secondary-color);
 }
 
 .title-new-note, .text-new-note {
@@ -42,4 +41,8 @@
 
 .btn-add-new-note:hover {
     transform: scale(1);
+}
+
+.active {
+    color: var(--primary-color);
 }

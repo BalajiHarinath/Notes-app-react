@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./Context";
+import { AuthProvider, ArchiveProvider, NotesProvider } from "./Context";
 
 // Call make Server
 makeServer();
@@ -13,7 +13,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <App />
+        <NotesProvider>
+          <ArchiveProvider>
+            <App />
+          </ArchiveProvider>
+        </NotesProvider>
       </AuthProvider> 
     </Router>
   </React.StrictMode>,
