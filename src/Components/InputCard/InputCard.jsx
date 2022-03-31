@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./inputcard.css";
+import "./inputCard.css";
 import { useState } from "react";
 import { ColorPalette } from "..";
 import { useNotes } from "../../Context";

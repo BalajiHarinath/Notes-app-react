@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./Toast.css";
+import "./toast.css";
 
 import { useEffect } from "react";
 import { useAuth } from "../../Context";

@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./colorpalette.css";
+import "./colorPalette.css";
 import { useState } from "react";
 
 export const ColorPalette = ({setInputCardDetails, inputCardDetails}) => {
