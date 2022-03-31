@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "../Display-card/displaycard.css";
+import "../DisplayCard/displayCard.css";
 import { useArchive } from "../../Context";
 
 export const ArchivedCard = ({item}) => {

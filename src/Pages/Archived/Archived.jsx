@@ -1,16 +1,14 @@
 import "../../css/main.css";
 import "./archived.css";
 import { useAuth } from "../../Context";
-import { Header, Footer, ArchivedCard, Sidebar } from "../../Components";
+import { ArchivedCard, Sidebar } from "../../Components";
 
 export const Archived = () => {
     const { authState } = useAuth();
     const { archivedNotes } = authState;
 
     return(
-        <>
-        <Header />
-        <main className="archived-main grid-2-column m-3">
+        <main className="archived-main m-3">
             <Sidebar />
             <div>
                 <div>
@@ -28,9 +26,6 @@ export const Archived = () => {
                 </div>
                 <div className="spacer-2"></div>
             </div>
-
         </main>
-        <Footer />
-        </>
     )
 }

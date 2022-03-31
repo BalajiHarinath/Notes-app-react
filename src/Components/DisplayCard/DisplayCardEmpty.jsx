@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./displaycard.css";
+import "./displayCard.css";
 
 export const DisplayCardEmpty = ({color, text}) => {
     return(

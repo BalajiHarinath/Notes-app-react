@@ -1,13 +1,13 @@
 .display-card {
     height: fit-content;
-    width: 30rem;
+    width: 40rem;
     position: relative;
     border: transparent;
     border-radius: 0.5rem;
 }
 
 .display-card-empty {
-    width: 30rem;
+    width: 40rem;
     height: 10rem;
 }
 

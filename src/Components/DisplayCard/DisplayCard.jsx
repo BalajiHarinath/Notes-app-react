@@ -1,5 +1,5 @@
 import "../../css/main.css";
-import "./displaycard.css";
+import "./displayCard.css";
 import { useNotes } from "../../Context";
 
 export const DisplayCard = ({item}) => {
