@@ -7,11 +7,19 @@ import { useAuth } from "../../Context";
 export const Login = () => {
     const { login, testlogin } = useAuth()
     const [showPasswordToggle, setShowPasswordToggle] = useState(true)
+    const [error, setError] = useState({isError: false, text: ""})
     const [userDetails, setUserDetails] = useState({email: "", password: ""})
     
 
     const submitHandler = (e) => {
         e.preventDefault()
+        if(!userDetails.email || !userDetails.password){
+            setError({isError: true, text: "Please enter all the fields"})
+        }
+        else if(!userDetails.email.includes("@")){
+            setError({isError: true, text: "Invalid email ID"})
+        }
+
         login(userDetails)
         setUserDetails({email: "", password: "", rememberMe: false})
     }
@@ -19,6 +27,7 @@ export const Login = () => {
     return(
         <main className="main-login flex flex-justify-center flex-align-center mt-4 mb-4">
         <form className="form-login" onSubmit={submitHandler}>
+        {error.isError ? <p className="text-alert pdt-1">{error.text}</p> : null}
             <div className="flex flex-column flex-gap-1-5 mt-2 mr-4 mb-2 ml-4">
                 <h3>Login</h3>
                 <div className="flex flex-column">

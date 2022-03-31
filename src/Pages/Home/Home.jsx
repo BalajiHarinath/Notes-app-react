@@ -1,49 +1,52 @@
 import "../../css/main.css";
 import "./home.css";
-import { DisplayCard, InputCard } from "../../Components";
-import { Header, Footer } from "../../Components";
+import { useState, useEffect } from "react";
+import { DisplayCard, InputCard, DisplayCardEmpty, Sidebar } from "../../Components";
+import { useAuth } from "../../Context";
 
 export const Home = () => {
+    const [createNewCard, setCreateNewCard] = useState(false)
+    const [pinnedNotes, setPinnedNotes] = useState([])
+    const [otherNotes, setOtherNotes] = useState([])
+    const { authState } = useAuth();
+    const { notes } = authState;
+
+    useEffect(() => {
+        setPinnedNotes(notes.filter((item) => item.pinned)) 
+        setOtherNotes(notes.filter((item) => !item.pinned))
+    },[notes])
+
     return(
-        <>
-        <Header />
-        <main className="home-main grid-2-column m-3">
-            <aside className="sidebar text-lg">
-                <ul className="list-style-none flex flex-column flex-gap-1">
-                    <li className="sidebar-item flex flex-align-center flex-gap-1">
-                        <span className="material-icons-outlined ">home</span>
-                        <span>Home</span>
-                    </li>
-                    <li className="sidebar-item flex flex-align-center flex-gap-1">
-                        <span className="material-icons-outlined ">label</span>
-                        <span>Labels</span>
-                    </li>
-                    <li className="sidebar-item flex flex-align-center flex-gap-1">
-                    <span className="material-icons-outlined ">inventory_2</span>
-                        <span>Archive</span>
-                    </li>
-                    <li className="sidebar-item flex flex-align-center flex-gap-1">
-                        <span className="material-icons-outlined ">delete</span>
-                        <span>Trash</span>
-                    </li>
-                    <li className="sidebar-item flex flex-align-center flex-gap-1">
-                        <span className="material-icons-outlined ">account_circle</span>
-                        <span>Profile</span>
-                    </li>
-
-                    <button className="btn-create-new-note btn-solid btn-medium flex flex-justify-center flex-align-center text-base">Create New Note</button>
-                </ul>
-            </aside>
-
+        <main className="home-main m-3">
             <div>
-                <InputCard />
-                <div className="spacer-3"></div>
+                <Sidebar />
+                {!createNewCard && <button className="btn-create-new-note btn-solid btn-medium flex flex-justify-center flex-align-center text-base ml-3 mt-2"
+                            onClick={() => {setCreateNewCard(!createNewCard)}}>
+                        Create New Note
+                    </button>}
+            </div>
+            
+            <div>
+                {createNewCard && 
+                <>
+                    <InputCard setCreateNewCard={setCreateNewCard}/>
+                    <div className="spacer-3"></div>
+                </>}
+                
 
                 {/* Pinned */}
                 <div>
                     <h4 className="font-bold text-lg">Pinned</h4>
                     <div className="spacer-1"></div>
-                        <DisplayCard color="#fcf5d8"/>
+                    {pinnedNotes.length !== 0 ?
+                        pinnedNotes.map((item) => {
+                               return(
+                                <DisplayCard item={item} key={item._id}/>
+                               )                            
+                            }) 
+                        :
+                        <DisplayCardEmpty color="#fcf5d8" text="pinned"/>
+                    }
                 </div>
 
                 <div className="spacer-2"></div>
@@ -52,12 +55,18 @@ export const Home = () => {
                 <div>
                     <h4 className="font-bold text-lg">Others</h4>
                     <div className="spacer-1"></div>
-                        <DisplayCard color="#eadbfa"/>
+                        {otherNotes.length !==0 ?
+                            otherNotes.map((item) => {
+                                return(
+                                    <DisplayCard item={item} key={item._id}/>
+                                )
+                        }) :
+                        <DisplayCardEmpty color="#eadbfa" />
+                    }
+                        
                 </div>
             </div>
 
         </main>
-        <Footer />
-        </>
     )
 }

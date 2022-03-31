@@ -1,8 +1,11 @@
 export { Header } from "./Header/Header";
 export { Footer } from "./Footer/Footer";
-export { DisplayCard } from "./Display-card/DisplayCard";
-export { InputCard } from "./Input-card/InputCard";
-export { RestrictAuth } from "./Restrict-auth/RestrictAuth";
-export { RequireAuth } from "./Restrict-auth/RequireAuth";
+export { DisplayCard } from "./DisplayCard/DisplayCard";
+export { InputCard } from "./InputCard/InputCard";
+export { RestrictAuth } from "./RestrictAuth/RestrictAuth";
+export { RequireAuth } from "./RestrictAuth/RequireAuth";
 export { Toast } from "./Toast/Toast";
-export { ColorPalette } from "./Color-palette/ColorPalette";
+export { ColorPalette } from "./ColorPalette/ColorPalette";
+export { DisplayCardEmpty } from "./DisplayCard/DisplayCardEmpty";
+export { ArchivedCard } from "./ArchivedCard/ArchivedCard";
+export { Sidebar } from "./Sidebar/Sidebar";

@@ -1,14 +1,16 @@
 import "./App.css";
 import "./css/main.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Location, useLocation } from "react-router-dom";
 
-import { Landing, SignUp, Login, Home } from "./Pages";
+import { Landing, SignUp, Login, Home, Archived } from "./Pages";
 import { Header, Footer, RestrictAuth, RequireAuth, Toast, ColorPalette } from "./Components";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
-      {/* {(window.location.pathname === '/login' || window.location.pathname === '/signup' || window.location.pathname=== '/') ? null : <Header />}   */}
+      {(location.pathname === '/login' || location.pathname === '/signup' || location.pathname=== '/') ? null : <Header />}  
       <Toast />
         <Routes>
             <Route path="/" element={<Landing />} />
@@ -21,10 +23,11 @@ function App() {
 
             <Route element={<RequireAuth />}>
               <Route path="/home" element={<Home />} />
+              <Route path="/archived" element={<Archived />} />
             </Route>
            
           </Routes>   
-      {/* {(window.location.pathname === '/login' || window.location.pathname === '/signup' || window.location.pathname === '/') ? null : <Footer />} */}
+      {(location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/') ? null : <Footer />}
     </div>
   );
 }

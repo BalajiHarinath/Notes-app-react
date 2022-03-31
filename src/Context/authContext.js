@@ -1,6 +1,7 @@
-import { createContext, useContext, useReducer, useEffect } from "react";
+import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { authReducer } from "../Utils";
+import { useNotes, useArchive } from ".";
 
 const initialAuthData = {
     toastData:{
@@ -11,7 +12,9 @@ const initialAuthData = {
     signedIn: false,
     userName: "",
     userEmail: "",
-    userID: ""
+    userID: "",
+    notes: [],
+    archivedNotes: [],
 }
 
 const AuthContext = createContext(initialAuthData)
@@ -19,6 +22,8 @@ const AuthContext = createContext(initialAuthData)
 const AuthProvider = ({children}) => {
 
     const [authState, authDispatch] = useReducer(authReducer, initialAuthData)
+    // const { getNotes } = useNotes();
+    // const { getArchivedNotes } = useArchive();
 
     const signUp = async(userDetails) => {
         try{
@@ -29,7 +34,7 @@ const AuthProvider = ({children}) => {
                 password: userDetails.password
             })
             if(response.status === 201){
-                localStorage.setItem("token", response.data.encodedToken);
+                localStorage.setItem("tokenNotesApp", response.data.encodedToken);
                 authDispatch({type: "LOGIN_SUCCESS", payload: {toastMessage: "Signed up", name: response.data.createdUser.firstName, email: response.data.createdUser.email, id:response.data.createdUser._id }})
             }    
             else if(response.status === 422){
@@ -41,8 +46,6 @@ const AuthProvider = ({children}) => {
         }
 
     }
-
-
 
     const login = async(userDetails) => {
         try{
