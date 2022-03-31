@@ -1,55 +1,57 @@
 .display-card {
-    height: fit-content;
-    width: 40rem;
-    position: relative;
-    border: transparent;
-    border-radius: 0.5rem;
+  height: fit-content;
+  width: 40rem;
+  position: relative;
+  border: transparent;
+  border-radius: 0.5rem;
 }
 
 .display-card-empty {
-    width: 40rem;
-    height: 10rem;
+  width: 40rem;
+  height: 10rem;
 }
 
 .btn-pinned {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    cursor: default;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: default;
 }
 
-.btn-archive, .btn-delete {
-    color: var(--text-color2);
+.btn-archive,
+.btn-delete {
+  color: var(--text-color2);
 }
 
-.btn-archive:hover, .btn-delete:hover {
-    color: var(--primary-color);
+.btn-archive:hover,
+.btn-delete:hover {
+  color: var(--primary-color);
 }
 
 .btn-edit-display-card {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .btn-edit-display-card:hover {
-    transform: scale(1);
+  transform: scale(1);
 }
 
 .text-display-card {
-    line-height: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .tag {
-    background-color: var(--white);
-    border: 1px solid var(--footer-background);
-    padding: 0.3rem 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--footer-background);
+  padding: 0.2rem 0.5rem;
 }
 
 .priority {
-    background-color: var(--white);
-    border: 1px solid var(--footer-background);
-    padding: 0.3rem 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--footer-background);
+  padding: 0.2rem 0.5rem;
 }
 
 .active {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }

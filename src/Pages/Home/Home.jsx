@@ -1,13 +1,25 @@
 import "../../css/main.css";
 import "./home.css";
 import { useState, useEffect } from "react";
-import { DisplayCard, InputCard, DisplayCardEmpty, Sidebar } from "../../Components";
+import { DisplayCard, InputCard, DisplayCardEmpty, Sidebar, EditCard } from "../../Components";
 import { useAuth } from "../../Context";
 
 export const Home = () => {
     const [createNewCard, setCreateNewCard] = useState(false)
     const [pinnedNotes, setPinnedNotes] = useState([])
     const [otherNotes, setOtherNotes] = useState([])
+    const [edit, setEdit] = useState({
+        isEdit: false,
+        editItem: {
+            _id: null,
+            pinned: false,
+            title: "",
+            description: "",
+            tag: "Tag",
+            priority: "Priority",
+            selectedBackgroundColor: "#faf8f8",
+        }
+    });
     const { authState } = useAuth();
     const { notes } = authState;
 
@@ -29,7 +41,7 @@ export const Home = () => {
             <div>
                 {createNewCard && 
                 <>
-                    <InputCard setCreateNewCard={setCreateNewCard}/>
+                    <InputCard setCreateNewCard={setCreateNewCard} edit={edit}/>
                     <div className="spacer-3"></div>
                 </>}
                 
@@ -41,7 +53,7 @@ export const Home = () => {
                     {pinnedNotes.length !== 0 ?
                         pinnedNotes.map((item) => {
                                return(
-                                <DisplayCard item={item} key={item._id}/>
+                                <DisplayCard item={item} edit={edit} setEdit={setEdit} key={item._id}/>
                                )                            
                             }) 
                         :
@@ -58,13 +70,14 @@ export const Home = () => {
                         {otherNotes.length !==0 ?
                             otherNotes.map((item) => {
                                 return(
-                                    <DisplayCard item={item} key={item._id}/>
+                                    <DisplayCard item={item} edit={edit} setEdit={setEdit} key={item._id}/>
                                 )
                         }) :
                         <DisplayCardEmpty color="#eadbfa" />
                     }
                         
                 </div>
+                { edit.isEdit && <EditCard edit={edit} setEdit={setEdit}/>}
             </div>
 
         </main>
