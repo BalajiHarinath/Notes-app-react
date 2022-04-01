@@ -1,0 +1,12 @@
+.image-error-page {
+    height: 100vh;
+    width: 100vw;
+    object-fit: contain;
+}
+
+.container-text {
+    position: fixed;
+    inset: 30vh 40vw;
+    width: fit-content;
+    height: fit-content;
+}

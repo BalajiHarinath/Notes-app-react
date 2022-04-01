@@ -1,29 +1,29 @@
 .button-palette {
-    position: relative;
-    display: inline;
-    cursor: pointer;
-    z-index: 3;
+  position: relative;
+  display: inline;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .container-palette {
-    position: absolute;
-    border: 1px solid var(--footer-background);
-    border-radius: 1rem;
-    width: 12rem;
-    padding: 0.5rem;
+  position: absolute;
+  border: 1px solid var(--footer-background);
+  border-radius: 1rem;
+  width: 12rem;
+  padding: 0.5rem;
 }
 
 .palette {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .palette:hover {
-    border: 2px solid var(--footer-background) !important;  /*Added  !important so that it overrides in line styling*/
+  border: 2px solid var(--footer-background) !important; /*Added  !important so that it overrides in line styling*/
 }
 
 .display-none {
-    display: none;
+  display: none;
 }

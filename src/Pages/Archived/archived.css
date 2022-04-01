@@ -1,7 +1,5 @@
 .archived-main {
-    margin-top: 6rem;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+  margin-top: 6rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
-
-
