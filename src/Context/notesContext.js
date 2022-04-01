@@ -75,7 +75,6 @@ const NotesProvider = ({ children }) => {
   };
 
   const archiveNote = async (_id, note) => {
-    console.log(_id, note);
     try {
       const response = await axios.post(
         `/api/notes/archives/${_id}`,

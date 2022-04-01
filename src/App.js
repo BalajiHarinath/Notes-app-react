@@ -2,7 +2,7 @@ import "./App.css";
 import "./css/main.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import { Landing, SignUp, Login, Home, Archived } from "./Pages";
+import { Landing, SignUp, Login, Home, Archived, ErrorPage } from "./Pages";
 import {
   Header,
   Footer,
@@ -17,11 +17,11 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname === "/login" ||
-      location.pathname === "/signup" ||
-      location.pathname === "/" ? null : (
+      {location.pathname === "/home" ||
+      location.pathname === "/archived" ||
+      location.pathname === "/label" ? (
         <Header />
-      )}
+      ) : null}
       <Toast />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -36,12 +36,13 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/archived" element={<Archived />} />
         </Route>
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {location.pathname === "/login" ||
-      location.pathname === "/signup" ||
-      location.pathname === "/" ? null : (
+      {location.pathname === "/home" ||
+      location.pathname === "/archived" ||
+      location.pathname === "/label" ? (
         <Footer />
-      )}
+      ) : null}
     </div>
   );
 }

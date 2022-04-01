@@ -52,7 +52,6 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
                   selectedBackgroundColor: selectedBackgroundColor,
                 },
               });
-              console.log(edit);
             }}
           >
             Edit

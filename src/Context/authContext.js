@@ -1,7 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { authReducer } from "../Utils";
-import { useNotes, useArchive } from ".";
 
 const initialAuthData = {
   toastData: {
@@ -21,8 +20,6 @@ const AuthContext = createContext(initialAuthData);
 
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthData);
-  // const { getNotes } = useNotes();
-  // const { getArchivedNotes } = useArchive();
 
   const signUp = async (userDetails) => {
     try {

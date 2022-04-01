@@ -2,7 +2,7 @@ import "../../css/main.css";
 import "./home.css";
 import { useState, useEffect } from "react";
 import { DisplayCard, InputCard, DisplayCardEmpty, Sidebar, EditCard } from "../../Components";
-import { useAuth } from "../../Context";
+import { useAuth, useNotes } from "../../Context";
 
 export const Home = () => {
     const [createNewCard, setCreateNewCard] = useState(false)
@@ -22,11 +22,16 @@ export const Home = () => {
     });
     const { authState } = useAuth();
     const { notes } = authState;
+    const { getNotes } = useNotes();
 
     useEffect(() => {
         setPinnedNotes(notes.filter((item) => item.pinned)) 
         setOtherNotes(notes.filter((item) => !item.pinned))
     },[notes])
+
+    useEffect(() => {
+        getNotes();
+    },[])
 
     return(
         <main className="home-main m-3">

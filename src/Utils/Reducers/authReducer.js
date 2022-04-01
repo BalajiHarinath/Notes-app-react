@@ -109,7 +109,7 @@ export const authReducer = (state, { type, payload }) => {
       return {
         ...state,
         toastData: { ...state.toastData, display: false },
-        archivedNotes: payload.archivedData,
+        archivedNotes: payload.data,
       };
 
     case "DELETE_FROM_ARCHIVE":

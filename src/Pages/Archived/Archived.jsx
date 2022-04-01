@@ -1,11 +1,17 @@
 import "../../css/main.css";
 import "./archived.css";
-import { useAuth } from "../../Context";
+import { useEffect } from "react";
+import { useAuth, useArchive } from "../../Context";
 import { ArchivedCard, Sidebar } from "../../Components";
 
 export const Archived = () => {
   const { authState } = useAuth();
   const { archivedNotes } = authState;
+  const { getArchivedNotes } = useArchive();
+
+  useEffect(() => {
+    getArchivedNotes();
+  },[])
 
   return (
     <main className="archived-main m-3">
