@@ -18,9 +18,9 @@ export const Sidebar = () => {
         </Link>
         <Link
           className={`${
-            location.pathname === "/" && "selected"
+            location.pathname === "/label" && "selected"
           } sidebar-item flex flex-align-center flex-gap-1`}
-          to=""
+          to="/label"
         >
           <span className="material-icons-outlined ">label</span>
           <span>Labels</span>

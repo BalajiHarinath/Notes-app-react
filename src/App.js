@@ -2,7 +2,16 @@ import "./App.css";
 import "./css/main.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import { Landing, SignUp, Login, Home, Archived, ErrorPage } from "./Pages";
+import {
+  Landing,
+  SignUp,
+  Login,
+  Home,
+  Archived,
+  ErrorPage,
+  LabelPage,
+} from "./Pages";
+
 import {
   Header,
   Footer,
@@ -34,6 +43,7 @@ function App() {
 
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/label" element={<LabelPage />} />
           <Route path="/archived" element={<Archived />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />

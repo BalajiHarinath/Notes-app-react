@@ -42,13 +42,13 @@
 
 .tag {
   background-color: var(--white);
-  border: 1px solid var(--footer-background);
+  border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
 }
 
 .priority {
   background-color: var(--white);
-  border: 1px solid var(--footer-background);
+  border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
 }
 
