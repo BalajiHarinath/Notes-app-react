@@ -14,6 +14,7 @@ const initialAuthData = {
   userID: "",
   notes: [],
   archivedNotes: [],
+  trashedNotes: []
 };
 
 const AuthContext = createContext(initialAuthData);
@@ -121,6 +122,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    localStorage.clear();
     authDispatch({
       type: "LOGOUT",
       payload: { toastMessage: "Logged out", name: "", email: "", id: "" },

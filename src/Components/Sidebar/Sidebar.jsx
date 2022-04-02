@@ -34,6 +34,15 @@ export const Sidebar = () => {
           <span className="material-icons-outlined ">inventory_2</span>
           <span>Archive</span>
         </Link>
+        <Link
+          className={`${
+            location.pathname === "/trash" && "selected"
+          } sidebar-item flex flex-align-center flex-gap-1`}
+          to="/trash"
+        >
+          <span className="material-icons-outlined ">delete</span>
+          <span>Trash</span>
+        </Link>
       </ul>
     </aside>
   );

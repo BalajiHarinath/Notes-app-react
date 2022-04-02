@@ -70,7 +70,7 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
           <button
             className="btn-transparent"
             onClick={() => {
-              deleteNote(_id);
+              deleteNote(_id, item);
             }}
           >
             <span className="material-icons-outlined btn-delete text-3xl">

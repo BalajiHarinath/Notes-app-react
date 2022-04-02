@@ -33,7 +33,7 @@ export const ArchivedCard = ({ item }) => {
           <button
             className="btn-transparent"
             onClick={() => {
-              deleteFromArchive(_id);
+              deleteFromArchive(_id, item);
             }}
           >
             <span className="material-icons-outlined btn-delete text-3xl">

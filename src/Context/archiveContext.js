@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createContext, useContext } from "react";
-import { useAuth } from ".";
+import { useAuth, useTrash } from ".";
 
 const ArchiveContext = createContext();
 
 const ArchiveProvider = ({ children }) => {
   const { authDispatch } = useAuth();
+  const { addToTrash } = useTrash();
   const config = {
     headers: {
       authorization: localStorage.getItem("tokenNotesApp"),
@@ -26,17 +27,18 @@ const ArchiveProvider = ({ children }) => {
     }
   };
 
-  const deleteFromArchive = async (_id) => {
+  const deleteFromArchive = async (_id, note) => {
     try {
       const response = await axios.delete(
         `/api/archives/delete/${_id}`,
         config
       );
       if (response.status === 200) {
+        addToTrash(note)
         authDispatch({
           type: "DELETE_FROM_ARCHIVE",
           payload: {
-            toastMessage: "Archived note deleted",
+            toastMessage: "Archived note moved to trash",
             data: response.data.archives,
           },
         });
