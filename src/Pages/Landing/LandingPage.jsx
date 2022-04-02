@@ -2,8 +2,13 @@ import "../../css/main.css";
 import "./landing.css";
 import heroImage from "../../Assets/Images/hero-img.jpg";
 import { Link } from "react-router-dom";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Landing = () => {
+  
+  useDocumentTitle();
+  useScrollToTop();
+
   return (
     <main className="grid-2-column m-3">
       <div className="flex flex-column flex-justify-space-between text-align-left">

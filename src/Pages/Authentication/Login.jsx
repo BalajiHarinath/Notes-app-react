@@ -3,8 +3,13 @@ import "./authentication.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Login = () => {
+
+  useDocumentTitle();
+  useScrollToTop();
+  
   const { login, testlogin } = useAuth();
   const [showPasswordToggle, setShowPasswordToggle] = useState(true);
   const [error, setError] = useState({ isError: false, text: "" });

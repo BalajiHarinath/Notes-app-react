@@ -1,10 +1,15 @@
 import "../../css/main.css";
 import "./labelPage.css";
 import { useEffect, useState } from "react";
-import { Sidebar, LabelCard } from "../../Components";
+import { Sidebar, LabelCard, DisplayCardEmpty } from "../../Components";
 import { useNotes, useAuth } from "../../Context";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const LabelPage = () => {
+
+    useDocumentTitle();
+    useScrollToTop();
+
   const { getNotes } = useNotes();
   const { authState } = useAuth();
   const { notes } = authState;
@@ -35,7 +40,6 @@ export const LabelPage = () => {
       }
       if (labels.HighToLow) {
         newData.sort((a, b) => order[b.priority] - order[a.priority]);
-        console.log(newData);
       }
       if (labels.all) {
         setFilteredNotes(newData);
@@ -147,7 +151,7 @@ export const LabelPage = () => {
               return <LabelCard item={item} key={item._id} />;
             })
           ) : (
-            <div> No Notes</div>
+            <DisplayCardEmpty color="#fcf5d8" />
           )}
         </div>
         <div className="spacer-2"></div>

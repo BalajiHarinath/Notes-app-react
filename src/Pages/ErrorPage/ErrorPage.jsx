@@ -1,9 +1,11 @@
 import "../../css/main.css";
 import "./errorPage.css";
 import { Link } from "react-router-dom";
+import { useDocumentTitle } from "../../Utils";
 import pagenotfound from "../../Assets/Images/page-not-found.jpg.png";
 
 export const ErrorPage = () => {
+    useDocumentTitle();
     return(
         <div>
             <img className="image-error-page" src={pagenotfound} loading="lazy" alt="page-not-found"/>

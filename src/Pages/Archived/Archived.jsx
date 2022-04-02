@@ -2,9 +2,14 @@ import "../../css/main.css";
 import "./archived.css";
 import { useEffect } from "react";
 import { useAuth, useArchive } from "../../Context";
-import { ArchivedCard, Sidebar } from "../../Components";
+import { ArchivedCard, Sidebar, DisplayCardEmpty } from "../../Components";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Archived = () => {
+
+  useDocumentTitle();
+  useScrollToTop();
+
   const { authState } = useAuth();
   const { archivedNotes } = authState;
   const { getArchivedNotes } = useArchive();
@@ -25,7 +30,7 @@ export const Archived = () => {
               return <ArchivedCard item={item} key={item._id} />;
             })
           ) : (
-            <div> No Archived Notes</div>
+            <DisplayCardEmpty color="#fcf5d8" text="Archived"/>
           )}
         </div>
         <div className="spacer-2"></div>

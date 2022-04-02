@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 export const Sidebar = () => {
   const location = useLocation();
   return (
-    <aside className="sidebar text-lg">
+    <aside className="sidebar text-base">
       <ul className="list-style-none flex flex-column flex-gap-1">
         <Link
           className={`${

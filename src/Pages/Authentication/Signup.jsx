@@ -3,8 +3,13 @@ import "./authentication.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const SignUp = () => {
+
+  useDocumentTitle();
+  useScrollToTop();
+  
   const { authState, signUp } = useAuth();
 
   const [userDetails, setUserDetails] = useState({
