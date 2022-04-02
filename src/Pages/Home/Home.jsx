@@ -3,8 +3,13 @@ import "./home.css";
 import { useState, useEffect } from "react";
 import { DisplayCard, InputCard, DisplayCardEmpty, Sidebar, EditCard } from "../../Components";
 import { useAuth, useNotes } from "../../Context";
+import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Home = () => {
+
+    useDocumentTitle();
+    useScrollToTop();
+    
     const [createNewCard, setCreateNewCard] = useState(false)
     const [pinnedNotes, setPinnedNotes] = useState([])
     const [otherNotes, setOtherNotes] = useState([])

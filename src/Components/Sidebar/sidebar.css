@@ -5,15 +5,16 @@
 
 .sidebar-item {
   cursor: pointer;
-  padding: 0.5rem 1.5rem;
+  padding: 4.2px 1rem;
   width: fit-content;
-  border-radius: 1rem;
+  border-radius: 7px;
   color: var(--text-color1);
+  transition: all 0.5s ease;
 }
 
 .sidebar-item:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
 .btn-create-new-note {

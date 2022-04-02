@@ -4,3 +4,4 @@ export { Login } from "./Authentication/Login";
 export { Home } from "./Home/Home";
 export { Archived } from "./Archived/Archived";
 export { ErrorPage } from "./ErrorPage/ErrorPage";
+export { LabelPage } from "./LabelPage/LabelPage";
