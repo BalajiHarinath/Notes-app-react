@@ -11,3 +11,10 @@
 .btn-logout:hover {
   color: var(--primary-color);
 }
+
+/**Media Queries **/
+@media screen and (max-width: 1260px) {
+  .footer {
+    display: none;
+  }
+}

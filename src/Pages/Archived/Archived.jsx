@@ -6,7 +6,6 @@ import { ArchivedCard, Sidebar, DisplayCardEmpty } from "../../Components";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Archived = () => {
-
   useDocumentTitle();
   useScrollToTop();
 
@@ -16,13 +15,16 @@ export const Archived = () => {
 
   useEffect(() => {
     getArchivedNotes();
-  },[])
+  }, []);
 
   return (
     <main className="archived-main m-3">
-      <Sidebar />
+      <div className="sidebar-small-screen-archive-page">
+        <Sidebar />
+      </div>
+
       <div>
-        <div>
+        <div className="conatiner-archived-notes">
           <h4 className="font-bold text-lg">Archived</h4>
           <div className="spacer-1"></div>
           {archivedNotes.length !== 0 ? (
@@ -30,7 +32,7 @@ export const Archived = () => {
               return <ArchivedCard item={item} key={item._id} />;
             })
           ) : (
-            <DisplayCardEmpty color="#fcf5d8" text="Archived"/>
+            <DisplayCardEmpty color="#fcf5d8" text="Archived" />
           )}
         </div>
         <div className="spacer-2"></div>

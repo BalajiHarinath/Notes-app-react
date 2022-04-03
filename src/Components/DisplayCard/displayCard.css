@@ -40,7 +40,8 @@
   line-height: 1.5rem;
 }
 
-.tag, .priority {
+.tag,
+.priority {
   background-color: var(--white);
   border-radius: 7px;
   padding: 6px 8px;
@@ -48,4 +49,12 @@
 
 .active {
   color: var(--primary-color);
+}
+
+/** Media Queries **/
+@media screen and (max-width: 920px) {
+  .display-card,
+  .display-card-empty {
+    width: 35rem;
+  }
 }

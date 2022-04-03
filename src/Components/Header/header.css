@@ -10,3 +10,63 @@
 .title-header {
   color: var(--primary-color);
 }
+
+.nav-profile {
+  display: none;
+}
+
+.hamburger-small-screen {
+  display: none;
+}
+
+/**Media Queries **/
+@media screen and (max-width: 1260px) {
+  .nav-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-left: auto;
+  }
+
+  .email-username {
+    color: var(--primary-color);
+  }
+
+  .btn-logout:hover {
+    color: var(--primary-color);
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .header {
+    padding-left: 2rem;
+  }
+
+  .hamburger-small-screen {
+    display: block;
+  }
+
+  .sidebar-display {
+    background-color: var(--secondary-color);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  .btn-sidebar-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .btn-sidebar-close:hover {
+    color: var(--primary-color);
+  }
+
+  .sidebar-hide {
+    display: none;
+  }
+}

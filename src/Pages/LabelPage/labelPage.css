@@ -19,8 +19,36 @@
   color: var(--white);
 }
 
-.btn-priority {
+.btn-priority,
+.btn-date {
   width: 1rem;
   height: 1rem;
   accent-color: var(--primary-color);
+}
+
+/**Media Queries **/
+@media screen and (max-width: 920px) {
+  .label-main {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem 2rem 3rem 2rem;
+  }
+
+  .conatiner-label-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-small-screen-label-page {
+    display: none;
+  }
+
+  .container-labels-small-screen, .container-priority-small-screen, .container-date-small-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

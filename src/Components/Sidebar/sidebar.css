@@ -30,3 +30,10 @@
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
+
+.sidebar-small-screen {
+  display: block;
+  padding: 2rem;
+  margin-left: 0.5rem;
+  width: 13rem;
+}

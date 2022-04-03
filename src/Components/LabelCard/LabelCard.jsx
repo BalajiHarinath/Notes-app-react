@@ -2,8 +2,15 @@ import "../../css/main.css";
 import "../DisplayCard/displayCard.css";
 
 export const LabelCard = ({ item }) => {
-  const { _id, title, description, tag, priority, selectedBackgroundColor } =
-    item;
+  const {
+    _id,
+    title,
+    description,
+    tag,
+    priority,
+    selectedBackgroundColor,
+    createdTime,
+  } = item;
   return (
     <>
       <div
@@ -18,6 +25,7 @@ export const LabelCard = ({ item }) => {
         <div className="edit-section flex flex-gap-2">
           <div className="tag flex flex-align-center">{tag}</div>
           <div className="priority flex flex-align-center">{priority}</div>
+          <div className="priority flex flex-align-center">{createdTime}</div>
         </div>
       </div>
       <div className="spacer-2"></div>

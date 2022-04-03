@@ -27,12 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {location.pathname === "/home" ||
-      location.pathname === "/archived" ||
-      location.pathname === "/label" ||
-      location.pathname === "/trash" ? (
-        <Header />
-      ) : null} */}
       {["/home","/archived","/label","/trash"].includes(location.pathname) && <Header />}
       <Toast />
       <Routes>

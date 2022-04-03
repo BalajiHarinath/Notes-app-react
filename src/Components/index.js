@@ -9,6 +9,7 @@ export { ColorPalette } from "./ColorPalette/ColorPalette";
 export { DisplayCardEmpty } from "./DisplayCard/DisplayCardEmpty";
 export { ArchivedCard } from "./ArchivedCard/ArchivedCard";
 export { Sidebar } from "./Sidebar/Sidebar";
+export { SidebarSmallScreen } from "./Sidebar/SidebarSmallScreen";
 export { EditCard } from "./EditCard/EditCard";
 export { LabelCard } from "./LabelCard/LabelCard";
 export { TrashCard } from "./TrashCard/TrashCard";

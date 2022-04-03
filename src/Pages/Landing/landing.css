@@ -26,3 +26,22 @@
   color: var(--primary-color);
   transform: translateX(2%);
 }
+
+/**Media Queries**/
+@media screen and (max-width: 800px) {
+  .landing-page-main-small-screen,
+  .container-text-landing-page-small-screen {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container-text-landing-page-small-screen {
+    gap: 2rem;
+  }
+
+  .image-hero {
+    width: 30rem;
+    height: 30rem;
+    object-fit: cover;
+  }
+}

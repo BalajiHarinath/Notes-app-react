@@ -50,3 +50,10 @@
 .active {
   color: var(--primary-color);
 }
+
+/** Media Queries **/
+@media screen and (max-width: 920px) {
+  .container-input-new-note {
+    width: 35rem;
+  }
+}
