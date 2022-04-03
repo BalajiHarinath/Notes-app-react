@@ -14,7 +14,7 @@ export const Footer = () => {
       />
       <div>
         <p className="font-bold">{userName}</p>
-        <p className="email-username">{userEmail}</p>
+        <p className="email-username text-base">{userEmail}</p>
       </div>
       <div className="flex flex-column pdl-2">
         <button className="btn-logout btn-transparent" onClick={() => logout()}>

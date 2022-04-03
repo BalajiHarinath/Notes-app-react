@@ -26,6 +26,22 @@
   padding-left: 0.5rem;
 }
 
+.pdt-0 {
+  padding-top: 0rem;
+}
+
+.pdr-0 {
+  padding-right: 0rem;
+}
+
+.pdb-0 {
+  padding-bottom: 0rem;
+}
+
+.pdl-0 {
+  padding-left: 0rem;
+}
+
 .pdt-1 {
   padding-top: 1rem;
 }

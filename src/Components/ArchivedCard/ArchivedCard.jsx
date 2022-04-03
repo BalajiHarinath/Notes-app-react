@@ -17,29 +17,35 @@ export const ArchivedCard = ({ item }) => {
           <h5 className="pdb-1">{title}</h5>
           <p className="pdb-1 text-display-card text-base">{description}</p>
         </div>
-        <div className="edit-section flex flex-justify-space-between">
-          <div className="tag flex flex-align-center">{tag}</div>
-          <div className="priority flex flex-align-center">{priority}</div>
-          <button
-            className="btn-transparent"
-            onClick={() => {
-              restoreFromArchive(_id);
-            }}
-          >
-            <span className="material-icons-outlined btn-archive text-3xl">
-              unarchive
-            </span>
-          </button>
-          <button
-            className="btn-transparent"
-            onClick={() => {
-              deleteFromArchive(_id, item);
-            }}
-          >
-            <span className="material-icons-outlined btn-delete text-3xl">
-              delete
-            </span>
-          </button>
+
+        <div className="edit-section flex flex-align-center">
+          <div className="flex flex-gap-2">
+            <div className="tag flex flex-align-center">{tag}</div>
+            <div className="priority flex flex-align-center">{priority}</div>
+          </div>
+
+          <div className="flex flex-justify-end flex-grow-1 flex-gap-2">
+            <button
+              className="btn-transparent"
+              onClick={() => {
+                restoreFromArchive(_id);
+              }}
+            >
+              <span className="material-icons-outlined btn-archive text-3xl">
+                unarchive
+              </span>
+            </button>
+            <button
+              className="btn-transparent"
+              onClick={() => {
+                deleteFromArchive(_id, item);
+              }}
+            >
+              <span className="material-icons-outlined btn-delete text-3xl">
+                delete
+              </span>
+            </button>
+          </div>
         </div>
       </div>
       <div className="spacer-2"></div>

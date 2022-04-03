@@ -27,12 +27,13 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname === "/home" ||
+      {/* {location.pathname === "/home" ||
       location.pathname === "/archived" ||
       location.pathname === "/label" ||
       location.pathname === "/trash" ? (
         <Header />
-      ) : null}
+      ) : null} */}
+      {["/home","/archived","/label","/trash"].includes(location.pathname) && <Header />}
       <Toast />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -51,12 +52,7 @@ function App() {
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {location.pathname === "/home" ||
-      location.pathname === "/archived" ||
-      location.pathname === "/label" || 
-      location.pathname === "/trash" ? (
-        <Footer />
-      ) : null}
+      { ["/home","/archived","/label","/trash"].includes(location.pathname) && <Footer />}
     </div>
   );
 }
