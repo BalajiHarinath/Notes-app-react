@@ -1,11 +1,12 @@
 import axios from "axios";
 import { createContext, useContext } from "react";
-import { useAuth } from ".";
+import { useAuth, useTrash } from ".";
 
 const NotesContext = createContext();
 
 const NotesProvider = ({ children }) => {
   const { authDispatch } = useAuth();
+  const { addToTrash } = useTrash();
 
   const config = {
     headers: {
@@ -41,13 +42,14 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const deleteNote = async (_id) => {
+  const deleteNote = async (_id, item) => {
     try {
       const response = await axios.delete(`/api/notes/${_id}`, config);
       if (response.status === 200) {
+        addToTrash(item)
         authDispatch({
           type: "DELETE_NOTE",
-          payload: { toastMessage: "Note Deleted", data: response.data.notes },
+          payload: { toastMessage: "Note moved to trash", data: response.data.notes },
         });
       }
     } catch (error) {
@@ -56,7 +58,6 @@ const NotesProvider = ({ children }) => {
   };
 
   const updateNote = async (_id, note) => {
-    console.log(_id, note);
     try {
       const response = await axios.post(
         `/api/notes/${_id}`,

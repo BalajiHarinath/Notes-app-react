@@ -1,11 +1,11 @@
 import "../../css/main.css";
 import "../DisplayCard/displayCard.css";
-import { useArchive } from "../../Context";
+import { useTrash } from "../../Context";
 
-export const ArchivedCard = ({ item }) => {
+export const TrashCard = ({ item }) => {
   const { _id, title, description, tag, priority, selectedBackgroundColor } =
     item;
-  const { deleteFromArchive, restoreFromArchive } = useArchive();
+  const { restoreFromTrash, removeFromTrash } = useTrash();
   return (
     <>
       <div
@@ -28,21 +28,21 @@ export const ArchivedCard = ({ item }) => {
             <button
               className="btn-transparent"
               onClick={() => {
-                restoreFromArchive(_id);
+                restoreFromTrash(item);
               }}
             >
-              <span className="material-icons-outlined btn-archive text-3xl">
-                unarchive
+              <span className="material-icons-outlined btn-archive text-4xl">
+                restore_from_trash
               </span>
             </button>
             <button
               className="btn-transparent"
               onClick={() => {
-                deleteFromArchive(_id, item);
+                removeFromTrash(_id);
               }}
             >
-              <span className="material-icons-outlined btn-delete text-3xl">
-                delete
+              <span className="material-icons-outlined btn-delete text-4xl">
+                delete_forever
               </span>
             </button>
           </div>

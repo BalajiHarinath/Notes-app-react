@@ -10,6 +10,7 @@ import {
   Archived,
   ErrorPage,
   LabelPage,
+  TrashPage
 } from "./Pages";
 
 import {
@@ -26,11 +27,13 @@ function App() {
 
   return (
     <div className="App">
-      {location.pathname === "/home" ||
+      {/* {location.pathname === "/home" ||
       location.pathname === "/archived" ||
-      location.pathname === "/label" ? (
+      location.pathname === "/label" ||
+      location.pathname === "/trash" ? (
         <Header />
-      ) : null}
+      ) : null} */}
+      {["/home","/archived","/label","/trash"].includes(location.pathname) && <Header />}
       <Toast />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -45,14 +48,11 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/label" element={<LabelPage />} />
           <Route path="/archived" element={<Archived />} />
+          <Route path="/trash" element={<TrashPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {location.pathname === "/home" ||
-      location.pathname === "/archived" ||
-      location.pathname === "/label" ? (
-        <Footer />
-      ) : null}
+      { ["/home","/archived","/label","/trash"].includes(location.pathname) && <Footer />}
     </div>
   );
 }

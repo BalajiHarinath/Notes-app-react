@@ -57,7 +57,7 @@ export const EditCard = ({ edit, setEdit }) => {
           />
           <textarea
             type="text"
-            className="text-new-note"
+            className="text-new-note pdt-0 mt-0"
             placeholder="Take a note..."
             rows="3"
             value={editCardDetails.description}
@@ -70,37 +70,45 @@ export const EditCard = ({ edit, setEdit }) => {
           />
         </div>
         <div className="edit-section flex flex-justify-space-between">
-          <select
-            className="dropdown-new-note"
-            value={editCardDetails.tag}
-            onChange={(e) => {
-              setEditCardDetails({ ...editCardDetails, tag: e.target.value });
-            }}
-          >
-            <option value="Tag" hidden>
-              Tag
-            </option>
-            <option value="Home">Home</option>
-            <option value="Work">Work</option>
-            <option value="Personal">Personal</option>
-          </select>
-          <select
-            className="dropdown-new-note"
-            value={editCardDetails.priority}
-            onChange={(e) => {
-              setEditCardDetails({
-                ...editCardDetails,
-                priority: e.target.value,
-              });
-            }}
-          >
-            <option value="Priority" hidden>
-              Priority
-            </option>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-          </select>
+          <div className="flex flex-align-center flex-gap-2">
+            <select
+              className="dropdown-new-note"
+              value={editCardDetails.tag}
+              onChange={(e) => {
+                setEditCardDetails({ ...editCardDetails, tag: e.target.value });
+              }}
+            >
+              <option value="Tag" hidden>
+                Tag
+              </option>
+              <option value="Home">Home</option>
+              <option value="Work">Work</option>
+              <option value="Personal">Personal</option>
+            </select>
+            <select
+              className="dropdown-new-note"
+              value={editCardDetails.priority}
+              onChange={(e) => {
+                setEditCardDetails({
+                  ...editCardDetails,
+                  priority: e.target.value,
+                });
+              }}
+            >
+              <option value="Priority" hidden>
+                Priority
+              </option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+
+            <ColorPalette
+              setEditCardDetails={setEditCardDetails}
+              editCardDetails={editCardDetails}
+              edit={edit}
+            />
+          </div>
           <button
             className="btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base"
             onClick={() => {
@@ -110,13 +118,6 @@ export const EditCard = ({ edit, setEdit }) => {
           >
             Done
           </button>
-          <div className="btn-container-edit-section flex flex-gap-1">
-            <ColorPalette
-              setEditCardDetails={setEditCardDetails}
-              editCardDetails={editCardDetails}
-              edit={edit}
-            />
-          </div>
         </div>
       </div>
     </div>
