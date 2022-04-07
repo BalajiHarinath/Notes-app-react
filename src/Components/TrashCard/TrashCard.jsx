@@ -3,7 +3,7 @@ import "../DisplayCard/displayCard.css";
 import { useTrash } from "../../Context";
 
 export const TrashCard = ({ item }) => {
-  const { _id, title, description, tag, priority, selectedBackgroundColor } =
+  const { _id, title, description, tag, priority, selectedBackgroundColor, createdDate } =
     item;
   const { restoreFromTrash, removeFromTrash } = useTrash();
   return (
@@ -22,6 +22,7 @@ export const TrashCard = ({ item }) => {
           <div className="flex flex-gap-2">
             <div className="tag flex flex-align-center">{tag}</div>
             <div className="priority flex flex-align-center">{priority}</div>
+            <div className="priority flex flex-align-center">{createdDate}</div>
           </div>
 
           <div className="flex flex-justify-end flex-grow-1 flex-gap-2">

@@ -137,13 +137,30 @@ export const authReducer = (state, { type, payload }) => {
 
     //Trash Context
     case "MOVE_TO_TRASH":
-      return {...state, trashedNotes: payload.data}
+      return { ...state, trashedNotes: payload.data };
 
     case "RESTORE_FROM_TRASH":
-      return {...state, toastData: {display: true, data: payload.toastMessage, status: "success",}, notes: payload.notesData, trashedNotes: payload.trashData}
+      return {
+        ...state,
+        toastData: {
+          display: true,
+          data: payload.toastMessage,
+          status: "success",
+        },
+        notes: payload.notesData,
+        trashedNotes: payload.trashData,
+      };
 
     case "DELETE_FROM_TRASH":
-      return {...state,  toastData: {display: true, data: payload.toastMessage, status: "alert",}, trashedNotes: payload.data}
+      return {
+        ...state,
+        toastData: {
+          display: true,
+          data: payload.toastMessage,
+          status: "alert",
+        },
+        trashedNotes: payload.data,
+      };
 
     default:
       return { ...state };

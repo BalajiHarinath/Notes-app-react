@@ -12,15 +12,15 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <TrashProvider>
-          <NotesProvider>
-            <ArchiveProvider>             
-                <App />                
-            </ArchiveProvider>
-          </NotesProvider>
-        </TrashProvider> 
-      </AuthProvider> 
+        <AuthProvider>
+          <TrashProvider>
+            <NotesProvider>
+              <ArchiveProvider>             
+                  <App />                
+              </ArchiveProvider>
+            </NotesProvider>
+          </TrashProvider> 
+        </AuthProvider> 
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

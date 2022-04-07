@@ -1,7 +1,7 @@
 .snackbar-container {
   position: fixed;
   margin: 2rem 1rem;
-  width: 12rem;
+  width: fit-content;
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
   z-index: 3;

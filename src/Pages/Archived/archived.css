@@ -3,3 +3,23 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
+
+/**Media Queries **/
+@media screen and (max-width: 920px) {
+  .archived-main {
+    display: flex;
+    flex-direction: column;
+    margin: 6rem 2rem 3rem 2rem;
+  }
+
+  .conatiner-archived-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-small-screen-archive-page {
+    display: none;
+  }
+}

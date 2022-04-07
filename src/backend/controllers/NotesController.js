@@ -1,6 +1,7 @@
 import { Response } from "miragejs";
 import { requiresAuth } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
+import { formatDate, formatTime } from "../utils/authUtils";
 
 /**
  * All the routes related to Notes are present here.
@@ -46,9 +47,9 @@ export const createNoteHandler = function (schema, request) {
     }
     const { note } = JSON.parse(request.requestBody);
     if (!note.tags) {
-      user.notes.push({ ...note, _id: uuid(), tags: [] });
+      user.notes.push({ ...note, _id: uuid(), tags: [], createdDate: formatDate(), createdTime: formatTime() });  
     } else {
-      user.notes.push({ ...note, _id: uuid() });
+      user.notes.push({ ...note, _id: uuid(),  createdDate: formatDate(), createdTime: formatTime() });
     }
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
@@ -116,7 +117,7 @@ export const updateNoteHandler = function (schema, request) {
     const { note } = JSON.parse(request.requestBody);
     const { noteId } = request.params;
     const noteIndex = user.notes.findIndex((note) => note._id === noteId);
-    user.notes[noteIndex] = { ...user.notes[noteIndex], ...note };
+    user.notes[noteIndex] = { ...user.notes[noteIndex], ...note, createdDate: formatDate(), createdTime: formatTime() };
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
   } catch (error) {

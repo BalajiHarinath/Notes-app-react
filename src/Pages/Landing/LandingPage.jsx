@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Landing = () => {
-  
   useDocumentTitle();
   useScrollToTop();
 
   return (
-    <main className="grid-2-column m-3">
-      <div className="flex flex-column flex-justify-space-between text-align-left">
+    <main className="landing-page-main-small-screen grid-2-column m-3">
+      <div className="container-text-landing-page-small-screen flex flex-column flex-justify-space-between text-align-left">
         <h1>
           <span className="title-landing-page">Easy</span> Notes
         </h1>

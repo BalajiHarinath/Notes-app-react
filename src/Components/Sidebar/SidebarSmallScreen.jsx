@@ -2,12 +2,19 @@ import "../../css/main.css";
 import "./sidebar.css";
 import { Link, useLocation } from "react-router-dom";
 
-export const Sidebar = () => {
+export const SidebarSmallScreen = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const location = useLocation();
   return (
-    <aside className="sidebar text-base">
+    <aside
+      className={`${
+        isSidebarOpen ? "sidebar-small-screen" : "sidebar text-base"
+      } `}
+    >
       <ul className="list-style-none flex flex-column flex-gap-1">
         <Link
+          onClick={() => {
+            setIsSidebarOpen(!isSidebarOpen);
+          }}
           className={`${
             location.pathname === "/home" && "selected"
           } sidebar-item flex flex-align-center flex-gap-1`}
@@ -18,6 +25,9 @@ export const Sidebar = () => {
         </Link>
 
         <Link
+          onClick={() => {
+            setIsSidebarOpen(!isSidebarOpen);
+          }}
           className={`${
             location.pathname === "/label" && "selected"
           } sidebar-item flex flex-align-center flex-gap-1`}
@@ -28,6 +38,9 @@ export const Sidebar = () => {
         </Link>
 
         <Link
+          onClick={() => {
+            setIsSidebarOpen(!isSidebarOpen);
+          }}
           className={`${
             location.pathname === "/archived" && "selected"
           } sidebar-item flex flex-align-center flex-gap-1`}
@@ -38,6 +51,9 @@ export const Sidebar = () => {
         </Link>
 
         <Link
+          onClick={() => {
+            setIsSidebarOpen(!isSidebarOpen);
+          }}
           className={`${
             location.pathname === "/trash" && "selected"
           } sidebar-item flex flex-align-center flex-gap-1`}

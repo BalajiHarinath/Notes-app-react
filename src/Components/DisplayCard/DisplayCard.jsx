@@ -11,6 +11,7 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
     tag,
     priority,
     selectedBackgroundColor,
+    createdDate,
   } = item;
   const { archiveNote, deleteNote } = useNotes();
   return (
@@ -36,6 +37,7 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
           <div className="flex flex-gap-2">
             <div className="tag flex flex-align-center">{tag}</div>
             <div className="priority flex flex-align-center">{priority}</div>
+            <div className="priority flex flex-align-center">{createdDate}</div>
           </div>
 
           <div className="flex flex-justify-end flex-grow-1 flex-gap-2">

@@ -2,7 +2,7 @@ import "../../css/main.css";
 import "./errorPage.css";
 import { Link } from "react-router-dom";
 import { useDocumentTitle } from "../../Utils";
-import pagenotfound from "../../Assets/Images/page-not-found.jpg.png";
+import pagenotfound from "../../Assets/Images/page-not-found.jpg";
 
 export const ErrorPage = () => {
     useDocumentTitle();
