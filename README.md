@@ -1,4 +1,4 @@
-# [Easy Notes](https://notesfeed.netlify.app) - Note Taking App
+# [Easy Notes](https://easy-notes-react.netlify.app/) - Note Taking App
 
 **Easy Notes** is a note making app made using React JS. Your daily journey is coming to digital paper now. Write whatever you lived and what you thought. Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
 
@@ -6,12 +6,12 @@
 
 - User can add new note with respective title, description, note-color, label, pin and tag.
 - Edit Note data.
-- Filter based labels.
+- Filter based on labels.
 - Sort by created/edited date and also by priority.
-- Archive & restore the archived note.
-- Trash a note restore them.
+- Archive and restore the archived note.
+- Move notes to the trash folder and restore them.
 - Permanently delete a trashed note.
-- Sign in/Sign Up (Aythentication) using mock backend (MockBee)
+- Sign in/Sign Up (Authentication) using mock backend (MockBee)
 
 ### Tech Stack: 
 
