@@ -20,7 +20,10 @@ export const LabelCard = ({ item }) => {
       >
         <div className="container-input-text pdb-1">
           <h5 className="pdb-1">{title}</h5>
-          <p className="pdb-1 text-display-card text-base">{description}</p>
+          <p
+            className="pdb-1 text-display-card text-base"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></p>
         </div>
         <div className="edit-section flex flex-gap-2">
           <div className="tag flex flex-align-center">{tag}</div>

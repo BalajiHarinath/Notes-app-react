@@ -22,8 +22,18 @@ const ArchiveProvider = ({ children }) => {
           payload: { data: response.data.archives },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -43,8 +53,18 @@ const ArchiveProvider = ({ children }) => {
           },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -65,8 +85,18 @@ const ArchiveProvider = ({ children }) => {
           },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
