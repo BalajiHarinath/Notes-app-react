@@ -5,6 +5,7 @@
 ### Features:
 
 - User can add new note with respective title, description, note-color, label, pin and tag.
+- A rich text-editor using react quill.
 - Edit Note data.
 - Filter based on labels.
 - Sort by created/edited date and also by priority.
@@ -24,5 +25,5 @@
 - **React.js** : v17.0.2
 - **React router**: v6.2.2
 - **Axios** : v0.21.4
-- **Mirage js** : v0.1.41
+- **Mirage js** : v0.1.43
 - **SimpleUI Component library** (developed by me)
