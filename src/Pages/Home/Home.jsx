@@ -12,7 +12,7 @@ import { useAuth, useNotes } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Home = () => {
-  useDocumentTitle();
+  useDocumentTitle("Home");
   useScrollToTop();
 
   const [createNewCard, setCreateNewCard] = useState(false);

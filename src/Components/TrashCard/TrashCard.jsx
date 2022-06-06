@@ -23,7 +23,7 @@ export const TrashCard = ({ item }) => {
         <div className="container-input-text pdb-1">
           <h5 className="pdb-1">{title}</h5>
           <p
-            className="pdb-1 text-display-card text-base"
+            className="pdb-1 text-base"
             dangerouslySetInnerHTML={{ __html: description }}
           ></p>
         </div>
