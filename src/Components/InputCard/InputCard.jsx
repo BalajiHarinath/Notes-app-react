@@ -18,8 +18,6 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
   const { addNote } = useNotes();
   const [body, setBody] = useState("");
 
-  console.log(inputCardDetails.description);
-
   const updateInputCardDetails = () => {
     setInputCardDetails({ ...inputCardDetails, description: body });
   };
