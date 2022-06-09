@@ -88,7 +88,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const testlogin = async () => {
-    const userEmail = "testlogin@gmail.com";
+    const userEmail = "john@gmail.com";
     const userPassword = "test123";
     try {
       const response = await axios.post("/api/auth/login", {

@@ -18,6 +18,8 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
   const { addNote } = useNotes();
   const [body, setBody] = useState("");
 
+  console.log(inputCardDetails.description);
+
   const updateInputCardDetails = () => {
     setInputCardDetails({ ...inputCardDetails, description: body });
   };
@@ -133,7 +135,18 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
         </div>
 
         <button
-          className="btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base"
+          className={`${
+            inputCardDetails.title === "" ||
+            inputCardDetails.description === "<p><br></p>" ||
+            inputCardDetails.description === ""
+              ? "btn-disable-create-note"
+              : ""
+          } btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base`}
+          disabled={
+            inputCardDetails.title === "" ||
+            inputCardDetails.description === "<p><br></p>" ||
+            inputCardDetails.description === ""
+          }
           onClick={() => {
             setCreateNewCard((prev) => !prev);
             addNote({

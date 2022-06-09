@@ -137,7 +137,18 @@ export const EditCard = ({ edit, setEdit }) => {
             />
           </div>
           <button
-            className="btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base"
+            className={`${
+              editCardDetails.title === "" ||
+              editCardDetails.description === "<p><br></p>" ||
+              editCardDetails.description === ""
+                ? "btn-disable-edit-note"
+                : ""
+            } btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base`}
+            disabled={
+              editCardDetails.title === "" ||
+              editCardDetails.description === "<p><br></p>" ||
+              editCardDetails.description === ""
+            }
             onClick={() => {
               updateNote(edit.editItem._id, editCardDetails);
               setEdit({ ...edit, isEdit: false });
