@@ -12,7 +12,7 @@ import { useAuth, useNotes } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Home = () => {
-  useDocumentTitle();
+  useDocumentTitle("Home");
   useScrollToTop();
 
   const [createNewCard, setCreateNewCard] = useState(false);
@@ -49,7 +49,7 @@ export const Home = () => {
         <Sidebar />
         {!createNewCard && (
           <button
-            className="btn-create-new-note btn-solid btn-medium flex flex-justify-center flex-align-center text-base ml-3 mt-2"
+            className="btn-create-new-note-desktop-screen btn-solid btn-medium flex flex-justify-center flex-align-center text-base ml-3 mt-2"
             onClick={() => {
               setCreateNewCard(!createNewCard);
             }}

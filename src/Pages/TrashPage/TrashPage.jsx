@@ -1,12 +1,11 @@
 import "../../css/main.css";
 import "./trashPage.css";
-import { useEffect } from "react";
 import { useAuth, useTrash } from "../../Context";
 import { TrashCard, Sidebar, DisplayCardEmpty } from "../../Components";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const TrashPage = () => {
-  useDocumentTitle();
+  useDocumentTitle("Trash");
   useScrollToTop();
 
   const { authState } = useAuth();

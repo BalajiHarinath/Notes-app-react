@@ -1,4 +1,4 @@
-# [Easy Notes](https://easy-notes-react.netlify.app/) - Note Taking App
+# [Easy Notes](https://easy-notes-1.netlify.app/) - Note Taking App
 
 **Easy Notes** is a note making app made using React JS. Your daily journey is coming to digital paper now. Write whatever you lived and what you thought. Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
 

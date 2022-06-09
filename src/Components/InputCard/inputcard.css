@@ -51,6 +51,21 @@
   color: var(--primary-color);
 }
 
+.btn-disable-create-note {
+  background-color: var(--primary-color);
+}
+
+.btn-disable-create-note:hover::after {
+  content: "empty title or description";
+  width: 11rem;
+  padding: 4px 3px;
+  background-color: #ffe1fd;
+  color: var(--red);
+  position: absolute;
+  right: -2rem;
+  bottom: 2rem;
+}
+
 /** Media Queries **/
 @media screen and (max-width: 920px) {
   .container-input-new-note {

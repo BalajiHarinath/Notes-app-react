@@ -30,10 +30,10 @@ export const ColorPalette = ({
   return (
     <div
       className="button-palette"
-      onMouseOver={() => {
+      onMouseEnter={() => {
         setPaletteDisplay(!paletteDisplay);
       }}
-      onMouseOut={() => {
+      onMouseLeave={() => {
         setPaletteDisplay(!paletteDisplay);
       }}
       style={{ color: paletteDisplay ? "var(--primary-color)" : "black" }}

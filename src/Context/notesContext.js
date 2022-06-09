@@ -25,6 +25,10 @@ const NotesProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -37,8 +41,18 @@ const NotesProvider = ({ children }) => {
           payload: { toastMessage: "Note Added", data: response.data.notes },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -50,10 +64,20 @@ const NotesProvider = ({ children }) => {
         authDispatch({
           type: "DELETE_NOTE",
           payload: { toastMessage: "Note moved to trash", data: response.data.notes },
+        });       
+      }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
         });
       }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -70,8 +94,18 @@ const NotesProvider = ({ children }) => {
           payload: { toastMessage: "Note Updated", data: response.data.notes },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 
@@ -92,8 +126,18 @@ const NotesProvider = ({ children }) => {
           },
         });
       }
+      else if (response.status === 404) {
+        authDispatch({
+          type: "HANDLER_ERROR",
+          payload: { toastMessage: "The email is not Registered" },
+        });
+      }
     } catch (error) {
       console.log(error);
+      authDispatch({
+        type: "HANDLER_ERROR",
+        payload: { toastMessage: "Handler error" },
+      });
     }
   };
 

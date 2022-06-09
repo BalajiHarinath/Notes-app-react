@@ -27,8 +27,7 @@ const TrashProvider = ({children}) => {
                 let newTrashData = [...trashedNotes]
                 newTrashData = newTrashData.filter((item) => item._id !== note._id)
                 authDispatch({type: "RESTORE_FROM_TRASH", payload: { toastMessage: "Moved to all notes", notesData: response.data.notes, trashData: newTrashData}})
-            }
-            
+            }           
         }catch(error){
             console.log(error)
         }      

@@ -1,7 +1,8 @@
 import "../../css/main.css";
 import "./editCard.css";
 import "../InputCard/inputcard.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
 import { useNotes } from "../../Context";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
 
@@ -17,6 +18,37 @@ export const EditCard = ({ edit, setEdit }) => {
     priority: editItem.priority,
     selectedBackgroundColor: editItem.selectedBackgroundColor,
   });
+  const [body, setBody] = useState(editCardDetails.description);
+
+  const updateInputCardDetails = () => {
+    setEditCardDetails({ ...editCardDetails, description: body });
+  };
+
+  useEffect(() => {
+    updateInputCardDetails();
+  }, [body]);
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+  ];
 
   return (
     <div className="modal-edit flex flex-align-center flex-justify-center">
@@ -55,18 +87,13 @@ export const EditCard = ({ edit, setEdit }) => {
             }}
             autoFocus
           />
-          <textarea
-            type="text"
-            className="text-new-note pdt-0 mt-0"
-            placeholder="Take a note..."
-            rows="3"
-            value={editCardDetails.description}
-            onChange={(e) => {
-              setEditCardDetails({
-                ...editCardDetails,
-                description: e.target.value,
-              });
-            }}
+          <ReactQuill
+            theme="snow"
+            value={body}
+            onChange={setBody}
+            placeholder={"Take a note..."}
+            modules={modules}
+            formats={formats}
           />
         </div>
         <div className="edit-section flex flex-justify-space-between">
@@ -110,7 +137,18 @@ export const EditCard = ({ edit, setEdit }) => {
             />
           </div>
           <button
-            className="btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base"
+            className={`${
+              editCardDetails.title === "" ||
+              editCardDetails.description === "<p><br></p>" ||
+              editCardDetails.description === ""
+                ? "btn-disable-edit-note"
+                : ""
+            } btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base`}
+            disabled={
+              editCardDetails.title === "" ||
+              editCardDetails.description === "<p><br></p>" ||
+              editCardDetails.description === ""
+            }
             onClick={() => {
               updateNote(edit.editItem._id, editCardDetails);
               setEdit({ ...edit, isEdit: false });

@@ -1,6 +1,7 @@
 /* sidebar */
 .sidebar {
   margin-left: 3rem;
+  position: fixed;
 }
 
 .sidebar-item {

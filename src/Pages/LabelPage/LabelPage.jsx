@@ -6,7 +6,7 @@ import { useNotes, useAuth } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const LabelPage = () => {
-  useDocumentTitle();
+  useDocumentTitle("Label");
   useScrollToTop();
 
   const { getNotes } = useNotes();

@@ -8,6 +8,13 @@
   display: none;
 }
 
+.btn-create-new-note-desktop-screen {
+  margin-top: 14rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+}
+
 /**Media Queries **/
 @media screen and (max-width: 920px) {
   .home-main {

@@ -20,3 +20,18 @@
   top: 1rem;
   right: 1rem;
 }
+
+.btn-disable-edit-note {
+  background-color: var(--primary-color);
+}
+
+.btn-disable-edit-note:hover::after {
+  content: "empty title or description";
+  width: 11rem;
+  padding: 4px 3px;
+  background-color: #ffe1fd;
+  color: var(--red);
+  position: absolute;
+  right: -2rem;
+  bottom: 2rem;
+}

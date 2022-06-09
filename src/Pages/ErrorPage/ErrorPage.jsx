@@ -5,7 +5,7 @@ import { useDocumentTitle } from "../../Utils";
 import pagenotfound from "../../Assets/Images/page-not-found.jpg";
 
 export const ErrorPage = () => {
-    useDocumentTitle();
+    useDocumentTitle("Error");
     return(
         <div>
             <img className="image-error-page" src={pagenotfound} loading="lazy" alt="page-not-found"/>
