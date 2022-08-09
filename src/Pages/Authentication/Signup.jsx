@@ -7,7 +7,7 @@ import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const SignUp = () => {
 
-  useDocumentTitle();
+  useDocumentTitle("Signup");
   useScrollToTop();
   
   const { authState, signUp } = useAuth();

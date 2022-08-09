@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Landing = () => {
-  useDocumentTitle();
+  useDocumentTitle("Landing");
   useScrollToTop();
 
   return (

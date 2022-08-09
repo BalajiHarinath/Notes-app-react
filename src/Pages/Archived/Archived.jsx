@@ -6,7 +6,7 @@ import { ArchivedCard, Sidebar, DisplayCardEmpty } from "../../Components";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Archived = () => {
-  useDocumentTitle();
+  useDocumentTitle("Archived");
   useScrollToTop();
 
   const { authState } = useAuth();

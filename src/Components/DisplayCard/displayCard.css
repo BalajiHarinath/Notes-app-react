@@ -36,10 +36,6 @@
   transform: scale(1);
 }
 
-.text-display-card {
-  line-height: 1.5rem;
-}
-
 .tag,
 .priority {
   background-color: var(--white);

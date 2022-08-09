@@ -1,6 +1,8 @@
 import "../../css/main.css";
 import "./inputcard.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ReactQuill from "react-quill";
+import "../../../node_modules/react-quill/dist/quill.snow.css";
 import { ColorPalette } from "..";
 import { useNotes } from "../../Context";
 
@@ -14,6 +16,38 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
     selectedBackgroundColor: "#faf8f8",
   });
   const { addNote } = useNotes();
+  const [body, setBody] = useState("");
+
+  const updateInputCardDetails = () => {
+    setInputCardDetails({ ...inputCardDetails, description: body });
+  };
+
+  useEffect(() => {
+    updateInputCardDetails();
+  }, [body]);
+
+  const modules = {
+    toolbar: [
+      [{ header: "1" }, { header: "2" }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link"],
+      ["clean"],
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+  ];
+
   return (
     <div
       className="container-input-new-note flex flex-column pd-1"
@@ -48,18 +82,13 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
           }}
           autoFocus
         />
-        <textarea
-          type="text"
-          className="text-new-note pdt-0 mt-0"
-          placeholder="Take a note..."
-          rows="2"
-          value={inputCardDetails.description}
-          onChange={(e) => {
-            setInputCardDetails({
-              ...inputCardDetails,
-              description: e.target.value,
-            });
-          }}
+        <ReactQuill
+          theme="snow"
+          value={body}
+          onChange={setBody}
+          placeholder={"Take a note..."}
+          modules={modules}
+          formats={formats}
         />
       </div>
       <div className="edit-section flex flex-justify-space-between">
@@ -104,7 +133,18 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
         </div>
 
         <button
-          className="btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base"
+          className={`${
+            inputCardDetails.title === "" ||
+            inputCardDetails.description === "<p><br></p>" ||
+            inputCardDetails.description === ""
+              ? "btn-disable-create-note"
+              : ""
+          } btn-add-new-note btn-solid btn-small flex flex-justify-center flex-align-center text-base`}
+          disabled={
+            inputCardDetails.title === "" ||
+            inputCardDetails.description === "<p><br></p>" ||
+            inputCardDetails.description === ""
+          }
           onClick={() => {
             setCreateNewCard((prev) => !prev);
             addNote({
