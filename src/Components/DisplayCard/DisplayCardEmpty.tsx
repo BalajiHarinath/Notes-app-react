@@ -1,7 +1,11 @@
 import "../../css/main.css";
 import "./displayCard.css";
 
-export const DisplayCardEmpty = ({ color, text }) => {
+type DisplayCardEmptyProps = {
+  color?: string,
+  text?: string
+}
+export const DisplayCardEmpty = ({ color, text }: DisplayCardEmptyProps) => {
   return (
     <>
       <div

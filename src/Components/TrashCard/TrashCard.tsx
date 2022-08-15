@@ -1,11 +1,15 @@
 import "../../css/main.css";
-import "./displayCard.css";
-import { useNotes } from "../../Context";
+import "../DisplayCard/displayCard.css";
+import { useTrash } from "../../Context";
+import { Note } from "Types/NoteType";
 
-export const DisplayCard = ({ item, edit, setEdit }) => {
+type TrashCardProps = {
+  item : Note
+}
+
+export const TrashCard = ({ item }: TrashCardProps) => {
   const {
     _id,
-    pinned,
     title,
     description,
     tag,
@@ -13,7 +17,7 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
     selectedBackgroundColor,
     createdDate,
   } = item;
-  const { archiveNote, deleteNote } = useNotes();
+  const { restoreFromTrash, removeFromTrash } = useTrash();
   return (
     <>
       <div
@@ -21,13 +25,6 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
         style={{ backgroundColor: selectedBackgroundColor }}
         key={_id}
       >
-        <button className="btn-transparent btn-pinned">
-          <span
-            className={`${pinned ? "active" : ""} material-icons btn-color`}
-          >
-            push_pin
-          </span>
-        </button>
         <div className="container-input-text pdb-1">
           <h5 className="pdb-1">{title}</h5>
           <p
@@ -47,44 +44,22 @@ export const DisplayCard = ({ item, edit, setEdit }) => {
             <button
               className="btn-transparent"
               onClick={() => {
-                archiveNote(_id, item);
+                restoreFromTrash(item);
               }}
             >
-              <span className="material-icons-outlined btn-archive text-3xl">
-                archive
+              <span className="material-icons-outlined btn-archive text-4xl">
+                restore_from_trash
               </span>
             </button>
             <button
               className="btn-transparent"
               onClick={() => {
-                deleteNote(_id, item);
+                removeFromTrash(_id);
               }}
             >
-              <span className="material-icons-outlined btn-delete text-3xl">
-                delete
+              <span className="material-icons-outlined btn-delete text-4xl">
+                delete_forever
               </span>
-            </button>
-
-            <button
-              className="btn-edit-display-card btn-solid btn-small flex flex-justify-center flex-align-center text-base"
-              onClick={() => {
-                setEdit({
-                  ...edit,
-                  isEdit: true,
-                  editItem: {
-                    ...edit.editItem,
-                    _id: _id,
-                    pinned: pinned,
-                    title: title,
-                    description: description,
-                    tag: tag,
-                    priority: priority,
-                    selectedBackgroundColor: selectedBackgroundColor,
-                  },
-                });
-              }}
-            >
-              Edit
             </button>
           </div>
         </div>

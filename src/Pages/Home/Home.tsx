@@ -10,15 +10,21 @@ import {
 } from "../../Components";
 import { useAuth, useNotes } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
+import { Note } from "Types/NoteType";
+
+export type EditState = {
+  isEdit: boolean,
+  editItem?: Note,
+}
 
 export const Home = () => {
   useDocumentTitle("Home");
   useScrollToTop();
 
-  const [createNewCard, setCreateNewCard] = useState(false);
-  const [pinnedNotes, setPinnedNotes] = useState([]);
-  const [otherNotes, setOtherNotes] = useState([]);
-  const [edit, setEdit] = useState({
+  const [createNewCard, setCreateNewCard] = useState<boolean>(false);
+  const [pinnedNotes, setPinnedNotes] = useState<Note[]>([]);
+  const [otherNotes, setOtherNotes] = useState<Note[]>([]);
+  const [edit, setEdit] = useState<EditState>({
     isEdit: false,
     editItem: {
       _id: null,

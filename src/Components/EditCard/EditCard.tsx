@@ -5,11 +5,18 @@ import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import { useNotes } from "../../Context";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { EditState } from "../../Pages/Home/Home";
+import { Note } from "Types/NoteType";
 
-export const EditCard = ({ edit, setEdit }) => {
+type EditCardProps = {
+  edit: EditState,
+  setEdit: Function,
+}
+
+export const EditCard = ({ edit, setEdit }: EditCardProps) => {
   const { isEdit, editItem } = edit;
   const { updateNote } = useNotes();
-  const [editCardDetails, setEditCardDetails] = useState({
+  const [editCardDetails, setEditCardDetails] = useState<Note>({
     _id: editItem._id,
     pinned: editItem.pinned,
     title: editItem.title,
@@ -18,7 +25,7 @@ export const EditCard = ({ edit, setEdit }) => {
     priority: editItem.priority,
     selectedBackgroundColor: editItem.selectedBackgroundColor,
   });
-  const [body, setBody] = useState(editCardDetails.description);
+  const [body, setBody] = useState<string>(editCardDetails.description);
 
   const updateInputCardDetails = () => {
     setEditCardDetails({ ...editCardDetails, description: body });
@@ -77,10 +84,9 @@ export const EditCard = ({ edit, setEdit }) => {
         </div>
         <div className="container-input-text pdb-1">
           <textarea
-            type="text"
             className="title-new-note"
             placeholder="Title"
-            rows="1"
+            rows={1}
             value={editCardDetails.title}
             onChange={(e) => {
               setEditCardDetails({ ...editCardDetails, title: e.target.value });

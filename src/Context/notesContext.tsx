@@ -1,10 +1,12 @@
 import axios from "axios";
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
+import { NotePropsType } from "Types/ContextTypes/NoteContextType";
+import { Note } from "../Types/NoteType";
 import { useAuth, useTrash } from ".";
 
-const NotesContext = createContext();
+const NotesContext = createContext({} as NotePropsType);
 
-const NotesProvider = ({ children }) => {
+const NotesProvider = ({ children } : { children: React.ReactNode }) => {
   const { authDispatch } = useAuth();
   const { addToTrash } = useTrash();
 
@@ -32,7 +34,7 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const addNote = async (note) => {
+  const addNote = async (note: Note) => {
     try {
       const response = await axios.post("/api/notes", { note: note }, config);
       if (response.status === 201) {
@@ -56,7 +58,7 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const deleteNote = async (_id, item) => {
+  const deleteNote = async (_id: string, item: Note) => {
     try {
       const response = await axios.delete(`/api/notes/${_id}`, config);
       if (response.status === 200) {
@@ -81,7 +83,7 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const updateNote = async (_id, note) => {
+  const updateNote = async (_id: string, note: Note) => {
     try {
       const response = await axios.post(
         `/api/notes/${_id}`,
@@ -109,7 +111,7 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const archiveNote = async (_id, note) => {
+  const archiveNote = async (_id: string, note: Note) => {
     try {
       const response = await axios.post(
         `/api/notes/archives/${_id}`,

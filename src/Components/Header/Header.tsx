@@ -6,7 +6,7 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import { SidebarSmallScreen } from "../Sidebar/SidebarSmallScreen";
 
 export const Header = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   const { authState, logout } = useAuth();
   const { userName, userEmail } = authState;
   return (

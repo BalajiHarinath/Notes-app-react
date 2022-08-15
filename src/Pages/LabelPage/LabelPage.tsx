@@ -4,6 +4,18 @@ import { useEffect, useState } from "react";
 import { Sidebar, LabelCard, DisplayCardEmpty } from "../../Components";
 import { useNotes, useAuth } from "../../Context";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
+import { Note } from "Types/NoteType";
+
+type LabelStateProps = {
+  all: boolean,
+  Home: boolean,
+  Work: boolean,
+  Personal: boolean,
+  LowToHigh: boolean,
+  HighToLow: boolean,
+  LatestFirst: boolean,
+  OldFirst: boolean,
+}
 
 export const LabelPage = () => {
   useDocumentTitle("Label");
@@ -16,7 +28,7 @@ export const LabelPage = () => {
   const tags = ["all", "Home", "Work", "Personal"];
   const order = { Low: 1, Medium: 2, High: 3 };
 
-  const [labels, setLabels] = useState({
+  const [labels, setLabels] = useState<LabelStateProps>({
     all: true,
     Home: false,
     Work: false,
@@ -27,7 +39,8 @@ export const LabelPage = () => {
     OldFirst: false,
   });
 
-  const [filteredNotes, setFilteredNotes] = useState([notes]);
+  // const [filteredNotes, setFilteredNotes] = useState([notes]);
+  const [filteredNotes, setFilteredNotes] = useState<Note[]>(notes);
 
   useEffect(() => {
     getNotes();

@@ -1,17 +1,21 @@
-export const authReducer = (state, { type, payload }) => {
-  switch (type) {
+import { AuthState } from "../../Types/ContextTypes/AuthContextType";
+import { Action } from "../../Types/ReducerTypes/ReducerType";
+
+export const authReducer = (state: AuthState, action : Action) => {
+  // const { type, payload } = action;
+  switch (action.type) {
     case "LOGIN_SUCCESS":
       return {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,   
           status: "success",
         },
         signedIn: true,
-        userName: payload.name,
-        userEmail: payload.email,
-        userID: payload.id,
+        userName: action.payload.name,
+        userEmail: action.payload.email,
+        userID: action.payload.id,
       };
 
     case "LOGIN_ERROR":
@@ -19,7 +23,7 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
       };
@@ -29,7 +33,7 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
       };
@@ -42,13 +46,13 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
         signedIn: false,
-        userName: payload.name,
-        userEmail: payload.email,
-        userID: payload.id,
+        userName: action.payload.name,
+        userEmail: action.payload.email,
+        userID: action.payload.id,
       };
 
     //Notes context
@@ -56,7 +60,7 @@ export const authReducer = (state, { type, payload }) => {
       return {
         ...state,
         toastData: { ...state.toastData, display: false },
-        notes: payload.data,
+        notes: action.payload.data,
       };
 
     case "ADD_NOTE":
@@ -64,10 +68,10 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "success",
         },
-        notes: payload.data,
+        notes: action.payload.data,
       };
 
     case "DELETE_NOTE":
@@ -75,10 +79,10 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
-        notes: payload.data,
+        notes: action.payload.data,
       };
 
     case "UPDATE_NOTE":
@@ -86,10 +90,10 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "success",
         },
-        notes: payload.data,
+        notes: action.payload.data,
       };
 
     case "ARCHIVE_NOTE":
@@ -97,11 +101,11 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "success",
         },
-        notes: payload.notesData,
-        archivedNotes: payload.archivedData,
+        notes: action.payload.notesData,
+        archivedNotes: action.payload.archivedData,
       };
 
     //Archived context
@@ -109,7 +113,7 @@ export const authReducer = (state, { type, payload }) => {
       return {
         ...state,
         toastData: { ...state.toastData, display: false },
-        archivedNotes: payload.data,
+        archivedNotes: action.payload.data,
       };
 
     case "DELETE_FROM_ARCHIVE":
@@ -117,10 +121,10 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
-        archivedNotes: payload.data,
+        archivedNotes: action.payload.data,
       };
 
     case "RESTORE_FROM_ARCHIVE":
@@ -128,27 +132,27 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "success",
         },
-        notes: payload.notesData,
-        archivedNotes: payload.archivedData,
+        notes: action.payload.notesData,
+        archivedNotes: action.payload.archivedData,
       };
 
     //Trash Context
     case "MOVE_TO_TRASH":
-      return { ...state, trashedNotes: payload.data };
+      return { ...state, trashedNotes: action.payload.data };
 
     case "RESTORE_FROM_TRASH":
       return {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "success",
         },
-        notes: payload.notesData,
-        trashedNotes: payload.trashData,
+        notes: action.payload.notesData,
+        trashedNotes: action.payload.trashData,
       };
 
     case "DELETE_FROM_TRASH":
@@ -156,10 +160,10 @@ export const authReducer = (state, { type, payload }) => {
         ...state,
         toastData: {
           display: true,
-          data: payload.toastMessage,
+          data: action.payload.toastMessage,
           status: "alert",
         },
-        trashedNotes: payload.data,
+        trashedNotes: action.payload.data,
       };
 
     default:

@@ -5,9 +5,16 @@ import ReactQuill from "react-quill";
 import "../../../node_modules/react-quill/dist/quill.snow.css";
 import { ColorPalette } from "..";
 import { useNotes } from "../../Context";
+import { Note } from "Types/NoteType";
+import { EditState } from "../../Pages/Home/Home";
 
-export const InputCard = ({ setCreateNewCard, edit }) => {
-  const [inputCardDetails, setInputCardDetails] = useState({
+type InputCardProps = {
+  setCreateNewCard: Function,
+  edit: EditState,
+}
+
+export const InputCard = ({ setCreateNewCard, edit }: InputCardProps) => {
+  const [inputCardDetails, setInputCardDetails] = useState<Note>({
     pinned: false,
     title: "",
     description: "",
@@ -16,7 +23,7 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
     selectedBackgroundColor: "#faf8f8",
   });
   const { addNote } = useNotes();
-  const [body, setBody] = useState("");
+  const [body, setBody] = useState<string>("");
 
   const updateInputCardDetails = () => {
     setInputCardDetails({ ...inputCardDetails, description: body });
@@ -72,10 +79,9 @@ export const InputCard = ({ setCreateNewCard, edit }) => {
       </button>
       <div className="container-input-text pdb-1">
         <textarea
-          type="text"
           className="title-new-note"
           placeholder="Title"
-          rows="1"
+          rows={1}
           value={inputCardDetails.title}
           onChange={(e) => {
             setInputCardDetails({ ...inputCardDetails, title: e.target.value });
