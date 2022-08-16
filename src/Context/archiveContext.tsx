@@ -1,10 +1,12 @@
 import axios from "axios";
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 import { useAuth, useTrash } from ".";
+import { ArchivePropsType } from "../Types/ContextTypes/ArchiveContextType";
+import { Note } from "../Types/NoteType";
 
-const ArchiveContext = createContext();
+const ArchiveContext = createContext({} as ArchivePropsType);
 
-const ArchiveProvider = ({ children }) => {
+const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
   const { authDispatch } = useAuth();
   const { addToTrash } = useTrash();
   const config = {
@@ -37,7 +39,7 @@ const ArchiveProvider = ({ children }) => {
     }
   };
 
-  const deleteFromArchive = async (_id, note) => {
+  const deleteFromArchive = async (_id: string, note: Note) => {
     try {
       const response = await axios.delete(
         `/api/archives/delete/${_id}`,
@@ -68,7 +70,7 @@ const ArchiveProvider = ({ children }) => {
     }
   };
 
-  const restoreFromArchive = async (_id) => {
+  const restoreFromArchive = async (_id: string) => {
     try {
       const response = await axios.post(
         `/api/archives/restore/${_id}`,

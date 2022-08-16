@@ -1,6 +1,16 @@
 import "../../css/main.css";
 import "./colorpalette.css";
 import { useState } from "react";
+import { Note } from "Types/NoteType";
+import { EditState } from "../../Pages/Home/Home";
+
+type ColorPaletteProps = {
+  setInputCardDetails?: Function,
+  inputCardDetails?: Note,
+  edit?: EditState,
+  editCardDetails?: Note,
+  setEditCardDetails?: Function,
+}
 
 export const ColorPalette = ({
   setInputCardDetails,
@@ -8,7 +18,7 @@ export const ColorPalette = ({
   edit,
   editCardDetails,
   setEditCardDetails,
-}) => {
+} : ColorPaletteProps) => {
   const colors = [
     "#FAF9F6",
     "#f28983",
@@ -24,7 +34,7 @@ export const ColorPalette = ({
     "#E8EAED",
   ];
 
-  const [paletteDisplay, setPaletteDisplay] = useState(false);
+  const [paletteDisplay, setPaletteDisplay] = useState<boolean>(false);
   const { isEdit } = edit;
 
   return (

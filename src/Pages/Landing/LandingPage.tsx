@@ -1,6 +1,7 @@
 import "../../css/main.css";
 import "./landing.css";
 import heroImage from "../../Assets/Images/hero-img.jpg";
+// import heroImage from "../../Assets/Images/";
 import { Link } from "react-router-dom";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 

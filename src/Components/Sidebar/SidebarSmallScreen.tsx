@@ -2,7 +2,11 @@ import "../../css/main.css";
 import "./sidebar.css";
 import { Link, useLocation } from "react-router-dom";
 
-export const SidebarSmallScreen = ({ isSidebarOpen, setIsSidebarOpen }) => {
+type SidebarSmallScreenProps = {
+  isSidebarOpen: boolean,
+  setIsSidebarOpen: Function,
+}
+export const SidebarSmallScreen = ({ isSidebarOpen, setIsSidebarOpen }: SidebarSmallScreenProps) => {
   const location = useLocation();
   return (
     <aside

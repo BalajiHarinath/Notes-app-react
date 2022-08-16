@@ -1,7 +1,12 @@
 import "../../css/main.css";
 import "../DisplayCard/displayCard.css";
+import { Note } from "Types/NoteType";
 
-export const LabelCard = ({ item }) => {
+type LabelCardProps = {
+  item : Note
+}
+
+export const LabelCard = ({ item }: LabelCardProps) => {
   const {
     _id,
     title,

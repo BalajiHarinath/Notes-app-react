@@ -1,18 +1,15 @@
 import "../../css/main.css";
 import "../DisplayCard/displayCard.css";
-import { useTrash } from "../../Context";
+import { useArchive } from "../../Context";
+import { Note } from "Types/NoteType";
+type ArchiveCardProps = {
+  item : Note
+}
 
-export const TrashCard = ({ item }) => {
-  const {
-    _id,
-    title,
-    description,
-    tag,
-    priority,
-    selectedBackgroundColor,
-    createdDate,
-  } = item;
-  const { restoreFromTrash, removeFromTrash } = useTrash();
+export const ArchivedCard = ({ item }: ArchiveCardProps) => {
+  const { _id, title, description, tag, priority, selectedBackgroundColor } =
+    item;
+  const { deleteFromArchive, restoreFromArchive } = useArchive();
   return (
     <>
       <div
@@ -32,28 +29,27 @@ export const TrashCard = ({ item }) => {
           <div className="flex flex-gap-2">
             <div className="tag flex flex-align-center">{tag}</div>
             <div className="priority flex flex-align-center">{priority}</div>
-            <div className="priority flex flex-align-center">{createdDate}</div>
           </div>
 
           <div className="flex flex-justify-end flex-grow-1 flex-gap-2">
             <button
               className="btn-transparent"
               onClick={() => {
-                restoreFromTrash(item);
+                restoreFromArchive(_id);
               }}
             >
-              <span className="material-icons-outlined btn-archive text-4xl">
-                restore_from_trash
+              <span className="material-icons-outlined btn-archive text-3xl">
+                unarchive
               </span>
             </button>
             <button
               className="btn-transparent"
               onClick={() => {
-                removeFromTrash(_id);
+                deleteFromArchive(_id, item);
               }}
             >
-              <span className="material-icons-outlined btn-delete text-4xl">
-                delete_forever
+              <span className="material-icons-outlined btn-delete text-3xl">
+                delete
               </span>
             </button>
           </div>

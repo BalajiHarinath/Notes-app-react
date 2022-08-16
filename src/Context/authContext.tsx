@@ -1,8 +1,9 @@
-import { createContext, useContext, useReducer } from "react";
+import React,{ createContext, useContext, useReducer } from "react";
 import axios from "axios";
 import { authReducer } from "../Utils";
+import { AuthPropsType, AuthState, User } from "Types/ContextTypes/AuthContextType";
 
-const initialAuthData = {
+const initialAuthData: AuthState = {
   toastData: {
     display: false,
     data: "",
@@ -14,15 +15,19 @@ const initialAuthData = {
   userID: "",
   notes: [],
   archivedNotes: [],
-  trashedNotes: []
+  trashedNotes: [],
+  // signUp: () => {},
+  // login: () => {},
+  // testlogin: () => {},
+  // logout: () => {},
 };
 
-const AuthContext = createContext(initialAuthData);
+const AuthContext = createContext(initialAuthData as AuthPropsType);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({ children } : { children: React.ReactNode }) => {
   const [authState, authDispatch] = useReducer(authReducer, initialAuthData);
 
-  const signUp = async (userDetails) => {
+  const signUp = async (userDetails: User) => {
     try {
       const response = await axios.post("/api/auth/signup", {
         firstName: userDetails.firstName,
@@ -56,7 +61,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (userDetails) => {
+  const login = async (userDetails: User) => {
     try {
       const response = await axios.post("/api/auth/login", {
         email: userDetails.email,

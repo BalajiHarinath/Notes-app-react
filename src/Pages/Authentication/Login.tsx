@@ -3,6 +3,8 @@ import "./authentication.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
+import { ErrorStateType } from "./Signup";
+import { User } from "Types/ContextTypes/AuthContextType";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
 
 export const Login = () => {
@@ -11,9 +13,9 @@ export const Login = () => {
   useScrollToTop();
   
   const { login, testlogin } = useAuth();
-  const [showPasswordToggle, setShowPasswordToggle] = useState(true);
-  const [error, setError] = useState({ isError: false, text: "" });
-  const [userDetails, setUserDetails] = useState({ email: "", password: "" });
+  const [showPasswordToggle, setShowPasswordToggle] = useState<boolean>(true);
+  const [error, setError] = useState<ErrorStateType>({ isError: false, text: "" });
+  const [userDetails, setUserDetails] = useState<User>({ email: "", password: "" });
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -3,7 +3,13 @@ import "./authentication.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context";
+import { User } from "Types/ContextTypes/AuthContextType";
 import { useScrollToTop, useDocumentTitle } from "../../Utils";
+
+export type ErrorStateType = {
+  isError: boolean,
+  text: string,
+}
 
 export const SignUp = () => {
 
@@ -12,7 +18,7 @@ export const SignUp = () => {
   
   const { authState, signUp } = useAuth();
 
-  const [userDetails, setUserDetails] = useState({
+  const [userDetails, setUserDetails] = useState<User>({
     firstName: "",
     lastName: "",
     email: "",
@@ -21,9 +27,9 @@ export const SignUp = () => {
     terms: false,
   });
 
-  const [error, setError] = useState({ isError: false, text: "" });
+  const [error, setError] = useState<ErrorStateType>({ isError: false, text: "" });
 
-  const [showPasswordToggle, setShowPasswordToggle] = useState(true);
+  const [showPasswordToggle, setShowPasswordToggle] = useState<boolean>(true);
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
