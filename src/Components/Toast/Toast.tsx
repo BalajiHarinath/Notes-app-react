@@ -13,7 +13,7 @@ export const Toast = () => {
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      authDispatch({ type: "REMOVE_TOAST" });
+      authDispatch({ type: "REMOVE_TOAST", payload:{} });
     }, 3000);
     return () => clearTimeout(timeoutID);
   }, [display]);

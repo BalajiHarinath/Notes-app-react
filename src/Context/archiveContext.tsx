@@ -6,16 +6,83 @@ import { Note } from "../Types/NoteType";
 
 const ArchiveContext = createContext({} as ArchivePropsType);
 
-const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
+const config = {
+  headers: {
+    authorization: localStorage.getItem("tokenNotesApp"),
+  },
+};
+
+export const getArchivedNote = async () => {
+  try {
+    const response = await axios.get("/api/archives", config);
+    if (response.status === 200) {
+      return response.data.archivedNotes;
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const deleteFromArchives = async (_id: string, note: Note) => {
+  try {
+    const response = await axios.delete(`/api/archives/delete/${_id}`, config);
+    if (response.status === 200) {
+      return response.data.archivedNotes;
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const restoreFromArchives = async (_id: string) => {
+  try {
+    const response = await axios.post(
+      `/api/archives/restore/${_id}`,
+      {},
+      config
+    );
+    if (response.status === 200) {
+      return {
+        notesData: response.data.notesData,
+        archivedData: response.data.archivedData,
+      };
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+const ArchiveProvider = ({ children }: { children: React.ReactNode }) => {
   const { authDispatch } = useAuth();
   const { addToTrash } = useTrash();
-  const config = {
-    headers: {
-      authorization: localStorage.getItem("tokenNotesApp"),
-    },
-  };
 
   const getArchivedNotes = async () => {
+    // getArchivedNote((archiveNotes) => {
+    //   authDispatch({
+    //           type: "GET_ARCHIVED_NOTES",
+    //           payload: { data: archiveNotes },
+    //         })
+    // }, () => {
+    //   authDispatch({
+    //           type: "HANDLER_ERROR",
+    //           payload: { toastMessage: "The email is not Registered" },
+    //         })
+    // }, (error) => {
+    //   console.log(error);
+    //     authDispatch({
+    //       type: "HANDLER_ERROR",
+    //       payload: { toastMessage: "Handler error" },
+    //     })
+    // })
     try {
       const response = await axios.get("/api/archives", config);
       if (response.status === 200) {
@@ -23,8 +90,7 @@ const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
           type: "GET_ARCHIVED_NOTES",
           payload: { data: response.data.archives },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },
@@ -46,7 +112,7 @@ const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
         config
       );
       if (response.status === 200) {
-        addToTrash(note)
+        addToTrash(note);
         authDispatch({
           type: "DELETE_FROM_ARCHIVE",
           payload: {
@@ -54,8 +120,7 @@ const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
             data: response.data.archives,
           },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },
@@ -86,8 +151,7 @@ const ArchiveProvider = ({ children }: { children : React.ReactNode }) => {
             archivedData: response.data.archives,
           },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },

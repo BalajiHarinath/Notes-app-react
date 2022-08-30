@@ -2,7 +2,6 @@ import { AuthState } from "../../Types/ContextTypes/AuthContextType";
 import { Action } from "../../Types/ReducerTypes/ReducerType";
 
 export const authReducer = (state: AuthState, action : Action) => {
-  // const { type, payload } = action;
   switch (action.type) {
     case "LOGIN_SUCCESS":
       return {
