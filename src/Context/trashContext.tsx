@@ -6,15 +6,26 @@ import { useAuth } from ".";
 
 const TrashContext = createContext({} as TrashPropsType);
 
-const TrashProvider = ({ children } : { children : React.ReactNode }) => {
+const config = {
+  headers: {
+    authorization: localStorage.getItem("tokenNotesApp"),
+  },
+};
+
+export const restoredFromTrash = async (note: Note) => {
+  try {
+    const response = await axios.post("/api/notes", { note: note }, config);
+    if (response.status === 201) {
+      return response.data.notes;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const TrashProvider = ({ children }: { children: React.ReactNode }) => {
   const { authState, authDispatch } = useAuth();
   const { trashedNotes } = authState;
-
-  const config = {
-    headers: {
-      authorization: localStorage.getItem("tokenNotesApp"),
-    },
-  };
 
   const addToTrash = (note: Note) => {
     const newTrashData = [...trashedNotes, note];

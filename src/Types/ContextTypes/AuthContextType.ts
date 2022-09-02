@@ -19,9 +19,9 @@ export type AuthState = {
     userName: string,
     userEmail: string,
     userID: string,
-    notes: Note[],
-    archivedNotes: Note[],
-    trashedNotes: Note[],
+    notes?: Note[],
+    archivedNotes?: Note[],
+    trashedNotes?: Note[],
     isError?: boolean,
     errorMessage?: string,
 }

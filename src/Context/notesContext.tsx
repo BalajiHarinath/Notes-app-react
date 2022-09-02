@@ -6,15 +6,94 @@ import { useAuth, useTrash } from ".";
 
 const NotesContext = createContext({} as NotePropsType);
 
-const NotesProvider = ({ children } : { children: React.ReactNode }) => {
+const config = {
+  headers: {
+    authorization: localStorage.getItem("tokenNotesApp"),
+  },
+};
+
+export const getNote = async () => {
+  try {
+    const response = await axios.get("/api/notes", config);
+    if (response.status === 200) {
+      return response.data.notes;
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const addNotes = async (note: Note) => {
+  try {
+    const response = await axios.post("/api/notes", { note: note }, config);
+    if (response.status === 201) {
+      return response.data.notes;
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const deleteNotes = async (_id: string, item: Note) => {
+  try {
+    const response = await axios.delete(`/api/notes/${_id}`, config);
+    if (response.status === 200) {
+      return response.data.notes;
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const updateNotes = async (_id: string, note: Note) => {
+  try {
+    const response = await axios.post(
+      `/api/notes/${_id}`,
+      { note: note },
+      config
+    );
+    if (response.status === 201) {
+      return response.data.notes;
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+export const archiveNotes = async (_id: string, note: Note) => {
+  try {
+    const response = await axios.post(
+      `/api/notes/archives/${_id}`,
+      { note: note },
+      config
+    );
+    if (response.status === 201) {
+      return {
+        notesData: response.data.notes,
+        archivedData: response.data.archivedNotes,
+      };
+    } else if (response.status === 404) {
+      return "The email is not Registered";
+    }
+  } catch (error) {
+    console.log(error);
+    return "Handler error";
+  }
+};
+
+const NotesProvider = ({ children }: { children: React.ReactNode }) => {
   const { authDispatch } = useAuth();
   const { addToTrash } = useTrash();
-
-  const config = {
-    headers: {
-      authorization: localStorage.getItem("tokenNotesApp"),
-    },
-  };
 
   const getNotes = async () => {
     try {
@@ -42,8 +121,7 @@ const NotesProvider = ({ children } : { children: React.ReactNode }) => {
           type: "ADD_NOTE",
           payload: { toastMessage: "Note Added", data: response.data.notes },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },
@@ -62,13 +140,15 @@ const NotesProvider = ({ children } : { children: React.ReactNode }) => {
     try {
       const response = await axios.delete(`/api/notes/${_id}`, config);
       if (response.status === 200) {
-        addToTrash(item)
+        addToTrash(item);
         authDispatch({
           type: "DELETE_NOTE",
-          payload: { toastMessage: "Note moved to trash", data: response.data.notes },
-        });       
-      }
-      else if (response.status === 404) {
+          payload: {
+            toastMessage: "Note moved to trash",
+            data: response.data.notes,
+          },
+        });
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },
@@ -95,8 +175,7 @@ const NotesProvider = ({ children } : { children: React.ReactNode }) => {
           type: "UPDATE_NOTE",
           payload: { toastMessage: "Note Updated", data: response.data.notes },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },
@@ -127,8 +206,7 @@ const NotesProvider = ({ children } : { children: React.ReactNode }) => {
             archivedData: response.data.archives,
           },
         });
-      }
-      else if (response.status === 404) {
+      } else if (response.status === 404) {
         authDispatch({
           type: "HANDLER_ERROR",
           payload: { toastMessage: "The email is not Registered" },

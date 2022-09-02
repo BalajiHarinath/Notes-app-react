@@ -3,6 +3,62 @@ import axios from "axios";
 import { authReducer } from "../Utils";
 import { AuthPropsType, AuthState, User } from "Types/ContextTypes/AuthContextType";
 
+
+export const signedUp = async (userDetails: User) => {
+  try {
+    const response = await axios.post("/api/auth/signup", {
+      firstName: userDetails.firstName,
+      lastName: userDetails.lastName,
+      email: userDetails.email,
+      password: userDetails.password,
+    });
+    if (response.status === 201) {
+      return response.data.user;
+    } else if (response.status === 422) {
+      return "Account already exists";
+    }
+  } catch (error) {
+    console.log(error);
+     return "Handler error";
+  }
+};
+
+export const logedin = async (userDetails: User) => {
+  try {
+    const response = await axios.post("/api/auth/login", {
+      email: userDetails.email,
+      password: userDetails.password,
+    });
+    if (response.status === 200) {
+      return response.data.user;
+    } else if (response.status === 404 || response.status === 401) {
+      return "Invalid credentials"
+    }
+  } catch (error) {
+    return "Handler error";
+  }
+};
+
+export const testlogedin = async () => {
+  const userEmail = "john@gmail.com";
+  const userPassword = "test123";
+  try {
+    const response = await axios.post("/api/auth/login", {
+      email: userEmail,
+      password: userPassword,
+    });
+
+    if (response.status === 200) {
+      return response.data.user;
+    } else if (response.status === 404 || response.status === 401) {
+     return "Invalid credentials";
+    }
+  } catch (error) {
+    return "Handler error";
+  }
+};
+
+
 const initialAuthData: AuthState = {
   toastData: {
     display: false,
@@ -119,6 +175,7 @@ const AuthProvider = ({ children } : { children: React.ReactNode }) => {
         });
       }
     } catch (error) {
+      console.log(error)
       authDispatch({
         type: "HANDLER_ERROR",
         payload: { toastMessage: "Handler error" },

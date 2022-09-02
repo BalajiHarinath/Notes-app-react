@@ -25,6 +25,7 @@ export type Action =
 }
 | {
     type: "REMOVE_TOAST",
+    payload: {}
 }
 | {
     type: "LOGOUT",
